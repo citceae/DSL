@@ -1,0 +1,2 @@
+6 {findIdx:ite(<(Param2,Param3),3,ite(<(Param1,Param3),2,ite(<(Param0,Param3),1,0)))}
+12.0561790000

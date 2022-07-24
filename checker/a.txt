@@ -1,0 +1,84 @@
+S->+ S S 
+S->x 
+S->y 
+S->z 
+S->ite B S S 
+B->< S S 
+-----------------------
+S->+ + S S S 
+S->+ x S 
+S->+ y S 
+S->+ z S 
+S->+ ite B S S S 
+S->+ S + S S 
+S->+ S x 
+S->+ S y 
+S->+ S z 
+S->+ S ite B S S 
+S->x 
+S->y 
+S->z 
+S->ite < S S S S 
+S->ite B + S S S 
+S->ite B x S 
+S->ite B y S 
+S->ite B z S 
+S->ite B ite B S S S 
+S->ite B S + S S 
+S->ite B S x 
+S->ite B S y 
+S->ite B S z 
+S->ite B S ite B S S 
+B->< + S S S 
+B->< x S 
+B->< y S 
+B->< z S 
+B->< ite B S S S 
+B->< S + S S 
+B->< S x 
+B->< S y 
+B->< S z 
+B->< S ite B S S 
+-----------------------
+b + c + a == a + b + c
+proved
+x + a == a + x
+proved
+y + a == a + y
+proved
+z + a == a + z
+proved
+If(A, b, c) + a == a + If(A, b, c)
+proved
+S->+ + S S S 
+S->+ x S 
+S->+ y S 
+S->+ z S 
+S->+ ite B S S S 
+S->x 
+S->y 
+S->z 
+S->ite < S S S S 
+S->ite B + S S S 
+S->ite B x S 
+S->ite B y S 
+S->ite B z S 
+S->ite B ite B S S S 
+S->ite B S + S S 
+S->ite B S x 
+S->ite B S y 
+S->ite B S z 
+S->ite B S ite B S S 
+B->< + S S S 
+B->< x S 
+B->< y S 
+B->< z S 
+B->< ite B S S S 
+B->< S + S S 
+B->< S x 
+B->< S y 
+B->< S z 
+B->< S ite B S S 
+-----------------------
+time used for gen: 0.041155536000587745
+time used for check: 5.188289870002336

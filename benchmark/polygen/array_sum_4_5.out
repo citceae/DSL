@@ -1,0 +1,2 @@
+41 {findSum:ite(&&(&&(<=(+(Param2,Param3),5),<=(+(Param0,Param1),5)),<=(+(Param1,Param2),5)),0,ite(<(5,+(Param0,Param1)),+(Param0,Param1),ite(<=(+(Param1,Param2),5),+(Param2,Param3),+(Param1,Param2))))}
+1.3225120000

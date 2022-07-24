@@ -1,0 +1,2 @@
+1 {f:str.++(Param0,str.++("/n",str.++(Param1,str.++("/n",Param2))))}
+0.1736540000

@@ -1,0 +1,334 @@
+S->x 
+S->y 
+S->z 
+S->0 
+S->1 
+S->+ S S 
+S->- S S 
+S->ite B S S 
+B->and B B 
+B->or B B 
+B->not B 
+B->< S S 
+B->= S S 
+B-><= S S 
+-----------------------
+S->x 
+S->y 
+S->z 
+S->0 
+S->1 
+S->+ x S 
+S->+ y S 
+S->+ z S 
+S->+ 0 S 
+S->+ 1 S 
+S->+ + S S S 
+S->+ - S S S 
+S->+ ite B S S S 
+S->+ S x 
+S->+ S y 
+S->+ S z 
+S->+ S 0 
+S->+ S 1 
+S->+ S + S S 
+S->+ S - S S 
+S->+ S ite B S S 
+S->- x S 
+S->- y S 
+S->- z S 
+S->- 0 S 
+S->- 1 S 
+S->- + S S S 
+S->- - S S S 
+S->- ite B S S S 
+S->- S x 
+S->- S y 
+S->- S z 
+S->- S 0 
+S->- S 1 
+S->- S + S S 
+S->- S - S S 
+S->- S ite B S S 
+S->ite and B B S S 
+S->ite or B B S S 
+S->ite not B S S 
+S->ite < S S S S 
+S->ite = S S S S 
+S->ite <= S S S S 
+S->ite B x S 
+S->ite B y S 
+S->ite B z S 
+S->ite B 0 S 
+S->ite B 1 S 
+S->ite B + S S S 
+S->ite B - S S S 
+S->ite B ite B S S S 
+S->ite B S x 
+S->ite B S y 
+S->ite B S z 
+S->ite B S 0 
+S->ite B S 1 
+S->ite B S + S S 
+S->ite B S - S S 
+S->ite B S ite B S S 
+B->and and B B B 
+B->and or B B B 
+B->and not B B 
+B->and < S S B 
+B->and = S S B 
+B->and <= S S B 
+B->and B and B B 
+B->and B or B B 
+B->and B not B 
+B->and B < S S 
+B->and B = S S 
+B->and B <= S S 
+B->or and B B B 
+B->or or B B B 
+B->or not B B 
+B->or < S S B 
+B->or = S S B 
+B->or <= S S B 
+B->or B and B B 
+B->or B or B B 
+B->or B not B 
+B->or B < S S 
+B->or B = S S 
+B->or B <= S S 
+B->not and B B 
+B->not or B B 
+B->not not B 
+B->not < S S 
+B->not = S S 
+B->not <= S S 
+B->< x S 
+B->< y S 
+B->< z S 
+B->< 0 S 
+B->< 1 S 
+B->< + S S S 
+B->< - S S S 
+B->< ite B S S S 
+B->< S x 
+B->< S y 
+B->< S z 
+B->< S 0 
+B->< S 1 
+B->< S + S S 
+B->< S - S S 
+B->< S ite B S S 
+B->= x S 
+B->= y S 
+B->= z S 
+B->= 0 S 
+B->= 1 S 
+B->= + S S S 
+B->= - S S S 
+B->= ite B S S S 
+B->= S x 
+B->= S y 
+B->= S z 
+B->= S 0 
+B->= S 1 
+B->= S + S S 
+B->= S - S S 
+B->= S ite B S S 
+B-><= x S 
+B-><= y S 
+B-><= z S 
+B-><= 0 S 
+B-><= 1 S 
+B-><= + S S S 
+B-><= - S S S 
+B-><= ite B S S S 
+B-><= S x 
+B-><= S y 
+B-><= S z 
+B-><= S 0 
+B-><= S 1 
+B-><= S + S S 
+B-><= S - S S 
+B-><= S ite B S S 
+-----------------------
+x + a == a + x
+proved
+y + a == a + y
+proved
+z + a == a + z
+proved
+0 + a == a + 0
+proved
+0 + a == a - 0
+proved
+1 + a == a + 1
+proved
+b + c + a == a + b + c
+proved
+b - c + a == a + b - c
+proved
+c - b + a == a - (b - c)
+proved
+c - a + b == b + c - a
+proved
+If(A, b, c) + a == a + If(A, b, c)
+proved
+a - c - b == a - (b + c)
+proved
+If(d < c, b, a) == If(c <= d, a, b)
+proved
+And(And(B, C), A) == And(A, And(B, C))
+proved
+And(Or(B, C), A) == And(A, Or(B, C))
+proved
+And(Not(B), A) == And(A, Not(B))
+proved
+And(a < b, A) == And(A, a < b)
+proved
+And(a == b, A) == And(A, a == b)
+proved
+And(a <= b, A) == And(A, a <= b)
+proved
+Or(And(B, C), A) == Or(A, And(B, C))
+proved
+Or(Or(B, C), A) == Or(A, Or(B, C))
+proved
+Or(Not(B), A) == Or(A, Not(B))
+proved
+Or(a < b, A) == Or(A, a < b)
+proved
+Or(a == b, A) == Or(A, a == b)
+proved
+Or(a <= b, A) == Or(A, a <= b)
+proved
+(a > 0) == (a >= 1)
+proved
+(a + c < b) == (a < b - c)
+proved
+(a - c < b) == (a < b + c)
+proved
+(a < 1) == (a <= 0)
+proved
+(x == a) == (a == x)
+proved
+(y == a) == (a == y)
+proved
+(z == a) == (a == z)
+proved
+(a == 0) == (a == 0)
+proved
+(a == 1) == (a == 1)
+proved
+(b + c == a) == (a == b + c)
+proved
+(a + c == b) == (b - c == a)
+proved
+(a + c == b) == (a == b - c)
+proved
+(If(A, b, c) == a) == (a == If(A, b, c))
+proved
+(a + c <= b) == (a <= b - c)
+proved
+(a - c <= b) == (a <= b + c)
+proved
+-----------------------
+S->x 
+S->y 
+S->z 
+S->0 
+S->1 
+S->+ x S 
+S->+ y S 
+S->+ z S 
+S->+ 0 S 
+S->+ 1 S 
+S->+ + S S S 
+S->+ - S S S 
+S->+ ite B S S S 
+S->- x S 
+S->- y S 
+S->- z S 
+S->- 0 S 
+S->- 1 S 
+S->- - S S S 
+S->- ite B S S S 
+S->- S x 
+S->- S y 
+S->- S z 
+S->- S 1 
+S->- S ite B S S 
+S->ite and B B S S 
+S->ite or B B S S 
+S->ite not B S S 
+S->ite < S S S S 
+S->ite = S S S S 
+S->ite B x S 
+S->ite B y S 
+S->ite B z S 
+S->ite B 0 S 
+S->ite B 1 S 
+S->ite B + S S S 
+S->ite B - S S S 
+S->ite B ite B S S S 
+S->ite B S x 
+S->ite B S y 
+S->ite B S z 
+S->ite B S 0 
+S->ite B S 1 
+S->ite B S + S S 
+S->ite B S - S S 
+S->ite B S ite B S S 
+B->and and B B B 
+B->and or B B B 
+B->and not B B 
+B->and < S S B 
+B->and = S S B 
+B->and <= S S B 
+B->or and B B B 
+B->or or B B B 
+B->or not B B 
+B->or < S S B 
+B->or = S S B 
+B->or <= S S B 
+B->not and B B 
+B->not or B B 
+B->not not B 
+B->not < S S 
+B->not = S S 
+B->not <= S S 
+B->< x S 
+B->< y S 
+B->< z S 
+B->< 0 S 
+B->< 1 S 
+B->< + S S S 
+B->< - S S S 
+B->< ite B S S S 
+B->< S x 
+B->< S y 
+B->< S z 
+B->< S 0 
+B->< S 1 
+B->< S ite B S S 
+B->= x S 
+B->= y S 
+B->= z S 
+B->= 0 S 
+B->= 1 S 
+B->= + S S S 
+B->= ite B S S S 
+B-><= x S 
+B-><= y S 
+B-><= z S 
+B-><= 0 S 
+B-><= + S S S 
+B-><= - S S S 
+B-><= ite B S S S 
+B-><= S x 
+B-><= S y 
+B-><= S z 
+B-><= S 1 
+B-><= S ite B S S 
+-----------------------
+time used for gen: 0.04106509499979438
+time used for check: 54.52015309700073

@@ -1,0 +1,2 @@
+7 {qm-choose:ite(<(Param1,Param0),ite(<(Param0,Param2),1,0),0)}
+0.0858390000

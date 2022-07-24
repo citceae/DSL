@@ -1,0 +1,2 @@
+439 {findSum:ite(<(5,+(Param0,Param1)),+(Param0,Param1),ite(<(5,+(Param2,Param3)),ite(<(5,+(Param1,Param2)),+(Param1,Param2),+(Param2,Param3)),ite(<(5,+(Param1,Param2)),+(Param1,Param2),0)))}
+2151.2894090000

@@ -1,0 +1,92 @@
+S -> S + S
+S -> x
+S -> y
+S -> z
+-----------------------
+S -> S + S + S
+S -> x + S
+S -> y + S
+S -> z + S
+S -> S + S + S
+S -> S + x
+S -> S + y
+S -> S + z
+S -> x
+S -> y
+S -> z
+-----------------------
+S -> S + S + S
+S -> x + S
+S -> y + S
+S -> z + S
+S -> x
+S -> y
+S -> z
+-----------------------
+S -> S + S + S + S
+S -> x + S + S
+S -> y + S + S
+S -> z + S + S
+S -> S + S + S + S
+S -> S + x + S
+S -> S + y + S
+S -> S + z + S
+S -> S + S + S + S
+S -> S + S + x
+S -> S + S + y
+S -> S + S + z
+S -> x + S + S
+S -> x + x
+S -> x + y
+S -> x + z
+S -> y + S + S
+S -> y + x
+S -> y + y
+S -> y + z
+S -> z + S + S
+S -> z + x
+S -> z + y
+S -> z + z
+S -> S + S + S + S
+S -> x + S + S
+S -> y + S + S
+S -> z + S + S
+S -> S + S + S + S
+S -> S + x + S
+S -> S + y + S
+S -> S + z + S
+S -> S + S + S + S
+S -> S + S + x
+S -> S + S + y
+S -> S + S + z
+S -> S + S + x
+S -> x + x
+S -> y + x
+S -> z + x
+S -> S + S + y
+S -> x + y
+S -> y + y
+S -> z + y
+S -> S + S + z
+S -> x + z
+S -> y + z
+S -> z + z
+S -> x
+S -> y
+S -> z
+-----------------------
+S -> S + S + S + S
+S -> x + S + S
+S -> y + S + S
+S -> z + S + S
+S -> x + x
+S -> x + y
+S -> x + z
+S -> y + y
+S -> y + z
+S -> z + z
+S -> x
+S -> y
+S -> z
+-----------------------
+
