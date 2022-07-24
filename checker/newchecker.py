@@ -14,7 +14,7 @@ import time
 from numpy import *
 
 t0=time.perf_counter() 
-f=open('depth=2_out_tl=10.txt','w')
+f=open('depth=2_op1_tl=10.txt','w')
 old=sys.stdout #将当前系统输出储存到临时变量
 sys.stdout=f #输出重定向到文件
 
@@ -440,14 +440,37 @@ def transone(nodei:Node):#第一个映射
             searchlist.append(nn)
     return trans(nodei, A[intcnt][0],A[boolcnt][0])
 
+def getNontermNum(nodei:Node):
+    searchlist = [] 
+    for n in nodei.Nodelist:
+        searchlist.append(n)
+    intcnt = 0
+    boolcnt = 0
+    while searchlist != []:
+        fn = searchlist.pop(0)
+        if fn.val in nonterm:
+            if fn.val == nonterm[0]:
+                intcnt = intcnt + 1
+            elif fn.val == nonterm[1]:
+                boolcnt = boolcnt+1
+            else:
+                assert(False)
+        for nn in fn.Nodelist:
+            searchlist.append(nn)
+    return intcnt,boolcnt
+
 def checkrule(rule,starti):#TODO
     flag = False
     for i in range(starti,len(rule)):
+        lhscnt1,lhscnt2 = getNontermNum(rule[i].right)
         lhslist = transall(rule[i].right)
-        for lhs in lhslist:
-            for j in range(i+1,len(rule)):
+        for j in range(i+1,len(rule)):
+            rhscnt1,rhscnt2 = getNontermNum(rule[j].right)
+            if lhscnt1!=rhscnt1 or lhscnt2!=rhscnt2:
+                continue
+            if rule[i].left == rule[j].left:
                 rhs = transone(rule[j].right)
-                if rule[i].left == rule[j].left:
+                for lhs in lhslist:                                                    
                     aim = lhs == rhs
                     p = time.perf_counter()
                     flag = prove(aim)
@@ -539,6 +562,7 @@ dsl1_.newprint()
 print(gg)
 dsl1_.secondprint()
 
+
 print('----------------dsl2----------------')
 dsl2 = extendDSL(dsl1_,rule)
 dsl2.dslprint()
@@ -555,65 +579,6 @@ print(gg)
 dsl2_.newprint()
 print(gg)
 dsl2_.secondprint()
-
-
-'''
-for i in rule:
-    i.right.nodeprint()
-    print('')
-print(gg)
-
-
-dsl2 = extendDSL(dsl1,rule)
-dsl2.dslprint()
-print(gg)
-
-
-rule1.right.nodeprint()
-print('')
-a = rule1.right.Nodelist[0]
-a.nodeprint()
-print('')
-a.Nodelist = [Node([],"S"),Node([],"S")]
-a.val = "+"
-a.nodeprint()
-print('')
-rule1.ruleprint()
--------------------------------
-
-rule1.ruleprint()
-print('')
-a = rule1.right.Nodelist[0]
-
-print(id(a))
-print(id(rule1.right.Nodelist[0]))
-
-a.Nodelist = copy.deepcopy(rule1.right.Nodelist)
-a.val = rule1.right.val
-a.nodeprint()
-print('')
-print(id(a))
-rule1.ruleprint()
-print('')
-
-rule1.right.Nodelist[0] = rule1.right.copy()
-rule1.ruleprint()
-print('')
-
-
-rule5.ruleprint()
-a=transall(rule5.right)
-
-print(len(a))
-for i in a:
-    print(i)
-
-rule7 = Rule("S",Node([Node([],"S"),Node([],"S")],"+"))
-rule.append(rule7)
-print(len(rule))
-checkrule(rule)
-print(len(rule))
-'''
 
 
 #print(timerecord)
@@ -646,7 +611,7 @@ f.close()
 
 
 
-
+'''
 x1=Int("x1")
 x2=Int("x2")
 lhs = x1 + x2
@@ -672,3 +637,4 @@ e = a<=b
 #print(e)
 aim = c == e
 prove(aim)
+'''
