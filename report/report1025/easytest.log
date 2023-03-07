@@ -1,0 +1,26 @@
+citceae@citceaeZen:~/ISTool1024/ISTool/build/executor$ ./run_sygus /home/citceae/DSL/benchmark/version4/tests/easytest.sl /home/citceae/DSL/benchmark/version4/obeouts/easytest.out obe
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1025 09:15:51.066205  8410 weighted_obe.cpp:246] Construct num:
+I1025 09:15:51.066241  8410 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:15:51.066244  8410 solver.cpp:25] Candidate result {eq1:Param0}
+I1025 09:15:51.073261  8410 solver.cpp:33] Counter example [0,1,0]
+I1025 09:15:51.073290  8410 weighted_obe.cpp:246] Construct num:
+I1025 09:15:51.073292  8410 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:15:51.073295  8410 solver.cpp:25] Candidate result {eq1:Param1}
+I1025 09:15:51.079236  8410 solver.cpp:33] Counter example [1,0,0]
+I1025 09:15:51.079269  8410 weighted_obe.cpp:246] Construct num:
+I1025 09:15:51.079272  8410 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:15:51.079274  8410 solver.cpp:25] Candidate result {eq1:1}
+I1025 09:15:51.084995  8410 solver.cpp:33] Counter example [2,0,0]
+I1025 09:15:51.085150  8410 weighted_obe.cpp:246] Construct num:
+I1025 09:15:51.085152  8410 weighted_obe.cpp:248] eq1@Start: 37
+I1025 09:15:51.085155  8410 weighted_obe.cpp:248] eq1@StartBool: 48
+I1025 09:15:51.085166  8410 solver.cpp:25] Candidate result {eq1:+(Param0,Param1)}
+I1025 09:15:51.091125  8410 solver.cpp:33] Counter example [0,0,1]
+I1025 09:15:51.093886  8410 weighted_obe.cpp:246] Construct num:
+I1025 09:15:51.093888  8410 weighted_obe.cpp:248] eq1@Start: 575
+I1025 09:15:51.093890  8410 weighted_obe.cpp:248] eq1@StartBool: 867
+I1025 09:15:51.093969  8410 solver.cpp:25] Candidate result {eq1:+(Param0,+(Param1,Param2))}
+4 {eq1:+(Param0,+(Param1,Param2))}
+0.033935
+

@@ -1,0 +1,7 @@
+I0924 21:32:42.588263 59466 solver.cpp:33] Counter example [-2,2,1]
+I0924 21:32:46.943320 59466 solver.cpp:25] Candidate result {eq1:ite(<(Param0,-(0,+(Param1,1))),ite(<(1,+(Param1,Param2)),ite(<(Param0,-(0,1)),ite(<(Param0,+(Param1,Param1)),ite(<(Param0,-(1,Param2)),-(Param0,Param1),+(Param0,Param1)),-(Param0,Param1)),+(Param0,Param1)),-(Param0,Param1)),ite(=(Param0,Param1),+(Param0,Param0),ite(<(1,Param2),+(Param0,Param1),ite(=(Param0,+(Param1,1)),1,ite(=(Param0,+(Param2,Param2)),Param1,ite(<(Param0,-(Param2,+(Param1,1))),-(Param0,Param1),ite(<(Param0,-(0,+(Param0,Param2))),ite(<(1,Param0),-(Param0,Param1),ite(=(Param0,+(Param1,Param2)),Param2,ite(=(Param1,1),+(Param0,Param0),ite(=(Param0,Param2),ite(<(1,+(Param0,Param1)),+(Param0,Param1),-(Param0,Param1)),ite(=(Param0,+(Param2,1)),ite(<(Param0,0),-(Param0,Param1),Param1),+(Param0,Param1)))))),+(Param0,Param1))))))))}
+I0924 21:32:46.954507 59466 solver.cpp:33] Counter example [-2,6,-3]
+I0924 21:32:51.997598 59466 solver.cpp:25] Candidate result {eq1:ite(<(Param0,-(1,+(Param1,Param2))),-(Param0,Param1),+(Param0,Param1))}
+61 {eq1:ite(<(Param0,-(1,+(Param1,Param2))),-(Param0,Param1),+(Param0,Param1))}
+66.7714
+

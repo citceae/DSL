@@ -1,0 +1,113 @@
+citceae@citceaeZen:~/ISTool1024/ISTool/build/executor$ ./run_sygus /home/citceae/DSL/benchmark/version5/tests/s3_g5.sl /home/citceae/DSL/benchmark/version5/obeouts/s3_g5.out obe
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1115 06:27:37.769421  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:37.769459  6651 weighted_obe.cpp:277] f@Start: 7
+I1115 06:27:37.769462  6651 solver.cpp:25] Candidate result {f:Param0}
+I1115 06:27:37.777102  6651 solver.cpp:33] Counter example [-2,0]
+I1115 06:27:37.777168  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:37.777168  6651 weighted_obe.cpp:277] f@Start: 7
+I1115 06:27:37.777173  6651 solver.cpp:25] Candidate result {f:-1}
+I1115 06:27:37.783839  6651 solver.cpp:33] Counter example [1,-1]
+I1115 06:27:37.785224  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:37.785226  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:27:37.785228  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:27:37.785229  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:27:37.785230  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:27:37.785231  6651 weighted_obe.cpp:277] f@N5: 49
+I1115 06:27:37.785233  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:27:37.785233  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:27:37.785234  6651 weighted_obe.cpp:277] f@Start: 861
+I1115 06:27:37.785235  6651 weighted_obe.cpp:277] f@StartBool: 151
+I1115 06:27:37.785275  6651 solver.cpp:25] Candidate result {f:+(Param0,-(Param1,-1))}
+I1115 06:27:37.792006  6651 solver.cpp:33] Counter example [1,0]
+I1115 06:27:37.796165  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:37.796169  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:27:37.796169  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:27:37.796171  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:27:37.796172  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:27:37.796173  6651 weighted_obe.cpp:277] f@N5: 427
+I1115 06:27:37.796175  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:27:37.796175  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:27:37.796176  6651 weighted_obe.cpp:277] f@Start: 1155
+I1115 06:27:37.796177  6651 weighted_obe.cpp:277] f@StartBool: 1287
+I1115 06:27:37.796295  6651 solver.cpp:25] Candidate result {f:ite(<(Param0,Param1),-1,Param0)}
+I1115 06:27:37.803014  6651 solver.cpp:33] Counter example [2,-1]
+I1115 06:27:37.808140  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:37.808144  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:27:37.808145  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:27:37.808146  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:27:37.808147  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:27:37.808148  6651 weighted_obe.cpp:277] f@N5: 427
+I1115 06:27:37.808151  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:27:37.808151  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:27:37.808152  6651 weighted_obe.cpp:277] f@Start: 1302
+I1115 06:27:37.808153  6651 weighted_obe.cpp:277] f@StartBool: 1291
+I1115 06:27:37.808291  6651 solver.cpp:25] Candidate result {f:ite(<(Param0,Param1),-1,1)}
+I1115 06:27:37.814898  6651 solver.cpp:33] Counter example [0,0]
+I1115 06:27:38.804935  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:38.804955  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:27:38.804956  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:27:38.804957  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:27:38.804958  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:27:38.804960  6651 weighted_obe.cpp:277] f@N5: 35834
+I1115 06:27:38.804961  6651 weighted_obe.cpp:277] f@N6: 27865
+I1115 06:27:38.804962  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:27:38.804963  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:27:38.804965  6651 weighted_obe.cpp:277] f@Start: 162830
+I1115 06:27:38.804965  6651 weighted_obe.cpp:277] f@StartBool: 108350
+I1115 06:27:38.894814  6651 solver.cpp:25] Candidate result {f:ite(<(Param0,Param1),-1,ite(<(Param0,1),Param0,1))}
+I1115 06:27:38.902637  6651 solver.cpp:33] Counter example [0,-1]
+I1115 06:27:40.635010  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:27:40.635027  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:27:40.635030  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:27:40.635030  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:27:40.635031  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:27:40.635033  6651 weighted_obe.cpp:277] f@N5: 53028
+I1115 06:27:40.635035  6651 weighted_obe.cpp:277] f@N6: 36989
+I1115 06:27:40.635035  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:27:40.635036  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:27:40.635037  6651 weighted_obe.cpp:277] f@Start: 232690
+I1115 06:27:40.635040  6651 weighted_obe.cpp:277] f@StartBool: 160756
+I1115 06:27:40.801256  6651 solver.cpp:25] Candidate result {f:ite(<(Param0,Param1),-1,ite(<(Param1,Param0),1,Param0))}
+I1115 06:27:40.809450  6651 solver.cpp:33] Counter example [-1,-1]
+I1115 06:28:06.455688  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:28:06.455709  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:28:06.455711  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:28:06.455713  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:28:06.455714  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:28:06.455715  6651 weighted_obe.cpp:277] f@N5: 528672
+I1115 06:28:06.455718  6651 weighted_obe.cpp:277] f@N6: 270943
+I1115 06:28:06.455718  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:28:06.455719  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:28:06.455720  6651 weighted_obe.cpp:277] f@Start: 2965733
+I1115 06:28:06.455722  6651 weighted_obe.cpp:277] f@StartBool: 1594638
+I1115 06:28:09.276587  6651 solver.cpp:25] Candidate result {f:+(Param1,ite(<(Param0,0),-1,ite(<(Param1,0),2,Param0)))}
+I1115 06:28:09.286206  6651 solver.cpp:33] Counter example [-1,1]
+I1115 06:28:54.330638  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:28:54.330657  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:28:54.330659  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:28:54.330662  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:28:54.330662  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:28:54.330663  6651 weighted_obe.cpp:277] f@N5: 744812
+I1115 06:28:54.330665  6651 weighted_obe.cpp:277] f@N6: 400265
+I1115 06:28:54.330667  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:28:54.330667  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:28:54.330669  6651 weighted_obe.cpp:277] f@Start: 4762061
+I1115 06:28:54.330670  6651 weighted_obe.cpp:277] f@StartBool: 2252314
+I1115 06:28:59.268743  6651 solver.cpp:25] Candidate result {f:+(ite(<(Param0,0),0,2),ite(=(Param0,Param1),-2,-1))}
+I1115 06:28:59.291553  6651 solver.cpp:33] Counter example [-1,-2]
+I1115 06:30:03.443730  6651 weighted_obe.cpp:275] Construct num:
+I1115 06:30:03.443749  6651 weighted_obe.cpp:277] f@N1: 1
+I1115 06:30:03.443751  6651 weighted_obe.cpp:277] f@N10: 1
+I1115 06:30:03.443753  6651 weighted_obe.cpp:277] f@N2: 1
+I1115 06:30:03.443753  6651 weighted_obe.cpp:277] f@N3: 1
+I1115 06:30:03.443755  6651 weighted_obe.cpp:277] f@N5: 928386
+I1115 06:30:03.443756  6651 weighted_obe.cpp:277] f@N6: 512267
+I1115 06:30:03.443758  6651 weighted_obe.cpp:277] f@N8: 1
+I1115 06:30:03.443759  6651 weighted_obe.cpp:277] f@N9: 1
+I1115 06:30:03.443760  6651 weighted_obe.cpp:277] f@Start: 6390739
+I1115 06:30:03.443761  6651 weighted_obe.cpp:277] f@StartBool: 2816735
+I1115 06:30:10.187022  6651 solver.cpp:25] Candidate result {f:ite(<(Param0,Param1),-1,ite(<(Param1,Param0),1,+(Param0,Param0)))}
+9 {f:ite(<(Param0,Param1),-1,ite(<(Param1,Param0),1,+(Param0,Param0)))}
+152.432
+

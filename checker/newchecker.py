@@ -11,12 +11,14 @@ import json
 import copy as cp
 import sys
 import time
+import functools
 from numpy import *
 
-t0=time.perf_counter() 
-f=open('depth=2_op1_tl=10.txt','w')
+'''
+f=open('repeat=1_op2_tl=10.txt','w')
 old=sys.stdout #将当前系统输出储存到临时变量
 sys.stdout=f #输出重定向到文件
+'''
 
 '''
 1.任意一条表达式的表示方法（树结构） 列表记录同一个非终结符的产生式 Done
@@ -25,9 +27,12 @@ sys.stdout=f #输出重定向到文件
 '''
 
 nonterm = ["S","B"] 
-term = ['x','y','z','0','1'] #TODO:常数的处理  
+#term = ['x','y','z','0','1'] #TODO:常数的处理  
+term = ['x','y','0','1','-1','2','-2']
+boolterm = ['and','or','not','<','=','<=']
+ops = ['and','or','not','<','=','<=','+','-','If']
 
-intlist = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+intlist = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']#深度为8时数量不够
 boollist = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 A = []
 
@@ -91,18 +96,33 @@ class Node:
         self.val = val #only when nodelist is empty the val is used to print the last term
         self.label = ''
 
-    def nodeprint(self):
+    def GetOpNum(self):
+        cnt = 0
+        if self.val in ops:
+            cnt = cnt + 1
+        for n in self.Nodelist:
+            cnt = cnt + n.GetOpNum()
+        return cnt
+
+    def GetNodeSign(self):
         if self.Nodelist ==[]:
-            print(self.val+' ',end='')
+            #print(self.val+' ',end='')
+            s = self.val + ' '
+            return s
         else:
-            print("(",end='')
+            #print("(",end='')
+            s = '('
             if self.val == "If":
-                print("ite ",end ='')
+                #print("ite ",end ='')
+                s = s + "ite "
             else:
-                print(self.val+' ',end='')
+                #print(self.val+' ',end='')
+                s = s + self.val + ' '
             for n in self.Nodelist:
-                    n.nodeprint()
-            print(")",end='')
+                s = s + n.GetNodeSign()
+            #print(")",end='')
+            s = s + ")"
+            return s
     
     def bodyprint(self): #TODO:head和body连在一起写
         global vari0
@@ -177,11 +197,16 @@ class Rule:
     def __init__(self,left,right) -> None:
         self.left = left
         self.right = right
+        self.sign = self.GetRuleSign()
 
-    def ruleprint(self):
-        print(self.left + '->',end='')
-        self.right.nodeprint()
-        print("") 
+    def GetRuleSign(self):
+        s0 = self.left+'->'
+        #print(self.left + '->',end='')
+        s1 = s0 + self.right.GetNodeSign()
+        return s1
+    
+    def GetOpNum(self):
+        return self.right.GetOpNum()
 
     def bodyprint(self):
         global vari0
@@ -240,63 +265,235 @@ class Rule:
         newrule = Rule(self.left,self.right.copy())
         return newrule
 
+
+def my_compare(x,y):
+    if x[0] == y[0]:
+        if len(x)>len(y):
+            return 1
+        elif len(x)<len(y):
+            return -1
+        if x>y:
+            return 1
+        else:
+            return -1
+    else:
+        if x[0] == 'S':
+            return -1
+        else:
+            return 1
+    return 0
+
+toprintdict ={'+':0,'-':1,'i':2}
+def my_compare_toprint(x,y):#TODO:顺序还是有问题
+    if x[0] == y[0]:
+        #assert(len(x)>=4)
+        #assert(len(y)>=4)
+        if x[3] != '(' and y[3] != '(':
+            if x>y:#调整参数顺序
+                return 1
+            else:
+                return -1
+        elif x[3] !='(' or y[3] != '(':
+            return len(x)-len(y)
+        else:
+            if x[4] in toprintdict:
+                tmp = toprintdict[x[4]]-toprintdict[y[4]]
+                if tmp!=0:
+                    return tmp              
+        if len(x)>len(y):
+            return 1
+        elif len(x)<len(y):
+            return -1
+        if x>y:
+            return 1
+        else:
+            return -1
+    else:
+        if x[0] == 'S':
+            return -1
+        else:
+            return 1
+    return 0   
+
+#alpha_b = {' ':0,'x':1,'y':2,'z':3,'0':4,'1':5,'+':6,'-':7,'i':8,'a':9,'o':10,'n':11,'<':12,'=':13,'S':14,'B':15,'t':16,'e':16,'r':16,'d':16,'(':17,')':18,'>':1000}#顺便也改回xyz01吧 换一个case都需要改 TODO
+alpha_b = {' ':0,'x':1,'y':2,'0':4,'1':5,'-1':5.1,'2':5.2,'-2':5.3,'+':6,'-':7,'i':8,'a':9,'o':10,'n':11,'<':12,'=':13,'S':14,'B':15,'t':16,'e':16,'r':16,'d':16,'(':17,')':18,'>':1000}#顺便也改回xyz01吧 换一个case都需要改 TODO
+
+#<和<=
+def my_compare_final(x:str,y:str):
+    len1 = len(x)
+    len2 = len(y)
+    for i in range(min(len1,len2)):
+        tmp = alpha_b[x[i]] - alpha_b[y[i]]
+        if tmp != 0:
+            return tmp
+    return len1-len2
+
+
 class DSL:
     def __init__(self,nonterm,term,rule,startterm):
         self.nonterm = nonterm
         self.term = term
         self.rule = rule
         self.startterm = startterm
+        self.DSLsign = dict()
+        for r in rule:
+            self.DSLsign[r.sign] = r
+        #self.DSLsignsort()
+        self.extendedrule = []
+
+    def getrule(self):
+        rules = []
+        for sign in self.DSLsign:
+            rules.append(self.DSLsign[sign])
+        return rules    
+
+    def DSLsignsort(self):#仅仅为了输出打印 根据长度原则
+        return sorted(self.DSLsign,key=functools.cmp_to_key(my_compare))
+        #for i in self.DSLsign:
+        #    print(i)
     
+    def DSLsignsorttoprint(self):#这才是为了输出打印 顺序还是有问题
+        return sorted(self.DSLsign,key=functools.cmp_to_key(my_compare_toprint))
+
+    def DSLsignsortfinal(self):#最终版！
+        return sorted(self.DSLsign,key=functools.cmp_to_key(my_compare_final))
+
     def dslprint(self):
-        for r in self.rule:
-            r.ruleprint()
+        for key,value in self.DSLsign.items():
+            print(value.GetRuleSign())
     
     def newprint(self):
         global func 
         func = -5
-        for r in self.rule:
+        for r in self.DSLsign:#in sorted(self.DSLsign)?
             func += 1
             print(trash+str(func)+' ',end='')
-            r.headprint()
-            r.lefttypeprint()
-            r.bodyprint()
+            self.DSLsign[r].headprint()
+            self.DSLsign[r].lefttypeprint()
+            self.DSLsign[r].bodyprint()
             print(')')
 
     def secondprint(self):
         global func
         func = -5
-        for r in self.rule:
+        for r in self.DSLsign:
             func +=1
             print("(func"+str(func)+' ',end='')
-            r.righttypeprint()
+            self.DSLsign[r].righttypeprint()
             print(')')
 
+    def helpprintnodes(self,signtointdict,inttoNodedict):
+        num = 1
+        s = ''
+        while(len(inttoNodedict)>0):
+            assert(num in inttoNodedict)
+            n = inttoNodedict.pop(num)
+            if n.val in boolterm:
+                ty = 'Bool'
+            else:
+                ty = "Int"
+            s = s + '(N' + str(num) +' '+ty+' ('
+            if n.val in term:
+                s = s + n.val + '))\n'
+            else:
+                assert(len(n.Nodelist)>0)
+                if n.val == "If":
+                    s = s + '(ite '
+                else:
+                    s = s + '('+n.val
+                for nn in n.Nodelist:
+                    if nn.GetNodeSign() == "S ":
+                        s = s + ' '+ "Start"
+                    elif nn.GetNodeSign() == "B ":
+                        s = s + ' '+ "StartBool"
+                    else:
+                        sign = nn.GetNodeSign()
+                        if sign in signtointdict:
+                            tmpnum = signtointdict[sign]
+                            s = s + ' '+"N"+str(tmpnum)
+                        else:
+                            tmpnum = len(signtointdict)+1
+                            signtointdict[sign] = tmpnum
+                            inttoNodedict[tmpnum] = nn
+                            s = s + ' '+"N"+str(tmpnum)
+                s = s + ')))\n'
+            num = num + 1
+        return s
+            
+
+
+    def nontermprint(self):
+        s = ''
+        gaps = '        '
+        signtointdict = {}
+        inttoNodedict = {}
+        sortedr = self.DSLsignsortfinal()
+        s = s + "((Start Int (\n"
+        flag = False
+        for r in sortedr:
+            if self.DSLsign[r].left == "B":
+                if not flag:
+                    s = s + gaps + '))\n'
+                    s = s + '(StartBool Bool (\n'
+                    flag = True
+            else:
+                pass
+            if self.DSLsign[r].right.val in term:
+                s = s + gaps + self.DSLsign[r].right.val+'\n'
+            else:
+                if self.DSLsign[r].right.val == "If":
+                    s = s + gaps + '(' + "ite"
+                else:
+                    s = s + gaps + '(' + self.DSLsign[r].right.val 
+                assert(len(self.DSLsign[r].right.Nodelist)>0)
+                for n in self.DSLsign[r].right.Nodelist:
+                    if n.GetNodeSign() == "S ":
+                        s = s + ' '+ "Start"
+                    elif n.GetNodeSign() == "B ":
+                        s = s + ' '+ "StartBool"
+                    else:
+                        sign = n.GetNodeSign()
+                        if sign in signtointdict:
+                            num = signtointdict[sign]
+                            s = s + ' '+"N"+str(num)
+                        else:
+                            num = len(signtointdict)+1
+                            signtointdict[sign] = num
+                            inttoNodedict[num] = n
+                            s = s + ' '+"N"+str(num)
+                s = s+')\n'
+        s = s + gaps + "))\n"
+        s = s + self.helpprintnodes(signtointdict,inttoNodedict)
+        s = s + '))\n'
+        return s 
+
     
-'''
-    def speprint(self):
-        assert(spec=='')
-        for r in self.rule:
-            r.speprint()
-'''
+            
+
+
     
-def extendDSL(dsl:DSL, rule:list):
+def extendDSL(dsl:DSL, rule:list,aim_repeat:int):
     nonterm = dsl.nonterm
     term = dsl.term
     startterm = dsl.startterm
 
-    newrule = []
-    for r in dsl.rule:
+    labelrule = dsl.rule[0]
+    now_repeat = 0
+    newrule = dsl.rule.copy()
+    while len(newrule) > 0:
+        r = newrule.pop(0)
         #print('r-----------',end='')
-        #r.ruleprint()
+        #r.GetRuleSign()
+
         aimcnt = 0
         while True:
         #遍历right（树形nodelist）中的所有节点 如果是一个非终结符 用对应的非终结符展开式展开一层 重新构造一棵树形rule加入到newrule中
             tmprule=r.copy()
             #print("first-----------",end='')
-            #tmprule.ruleprint()
+            #tmprule.GetRuleSign()
             n = tmprule.getaimNode(aimcnt,nonterm)
             #print("second-----------",end='')
-            #tmprule.ruleprint()
+            #tmprule.GetRuleSign()
             #print("n---------",end='')
             #print(id(n))
             if n == None:
@@ -307,19 +504,24 @@ def extendDSL(dsl:DSL, rule:list):
             for initrule in rule:
                 if aimnonterm == initrule.left:
                     #print("initrule---------",end='')
-                    #initrule.ruleprint()
+                    #initrule.GetRuleSign()
                     n.Nodelist = cp.deepcopy(initrule.right.Nodelist)
                     n.val = initrule.right.val
                     #print('newn------------',end='')
-                    #n.nodeprint()
+                    #n.GetNodeSign()
                     onenewrule = tmprule.copy()
-                    #tmprule.ruleprint()
+                    #tmprule.GetRuleSign()
                     #print("onenewrule------------",end='')
-                    #onenewrule.ruleprint()
+                    #onenewrule.GetRuleSign()
                     #print("finish---------------")
                     newrule.append(onenewrule)
+            break #之展开一次 while结构可以去掉
         if aimcnt == 0:
-            newrule.append(r)    
+            newrule.append(r) 
+        if newrule[0] ==labelrule:
+            now_repeat += 1
+            if now_repeat >= aim_repeat:
+                break   
     newdsl = DSL(nonterm,term,newrule,startterm)
     return newdsl
 
@@ -459,7 +661,7 @@ def getNontermNum(nodei:Node):
             searchlist.append(nn)
     return intcnt,boolcnt
 
-def checkrule(rule,starti):#TODO
+def checkrule(rule,starti,proved_cnt):#TODO
     flag = False
     for i in range(starti,len(rule)):
         lhscnt1,lhscnt2 = getNontermNum(rule[i].right)
@@ -472,28 +674,116 @@ def checkrule(rule,starti):#TODO
                 rhs = transone(rule[j].right)
                 for lhs in lhslist:                                                    
                     aim = lhs == rhs
-                    p = time.perf_counter()
+                    #p = time.perf_counter()
                     flag = prove(aim)
-                    q = time.perf_counter()
-                    timerecord.append(q-p)
+                    #q = time.perf_counter()
+                    #timerecord.append(q-p)
                     if flag:
+                        proved_cnt = proved_cnt + 1
+                        print(rule[i].GetRuleSign())
+                        print(rule[j].GetRuleSign())
                         rule.remove(rule[j])
-                        return rule,flag,i
-    return rule,flag,len(rule)-1
+                        return rule,flag,i,proved_cnt
+    return rule,flag,len(rule)-1,proved_cnt
 
-def checkDSL(dsl:DSL):
+def newcheckrule(newrule,rulelen):#允许检查长度相邻的项
+    proved_cnt = 0
+    marks = []
+    idx1 = 0
+    idx2 = idx1+1
+    changedlen = rulelen[idx1] #记录第一次长度变化 这是允许的
+    lhscnt1,lhscnt2 = getNontermNum(newrule[idx1].right)
+    lhslist = transall(newrule[idx1].right)
+    flag = False
+    proveflag = False
+    t = 0
+    while idx1 <= len(newrule)-2:
+        if idx2 > len(newrule)-1 or (flag and rulelen[idx2] != changedlen):
+            t = t+1
+            idx1 = idx1+1
+            idx2 = idx1+1
+            lhscnt1,lhscnt2 = getNontermNum(newrule[idx1].right)
+            lhslist = transall(newrule[idx1].right)
+            flag = False
+            continue
+        if not flag and rulelen[idx2] != rulelen[idx1]:
+            flag = True
+            changedlen = rulelen[idx2]
+        rhscnt1,rhscnt2 = getNontermNum(newrule[idx2].right)
+        if lhscnt1!=rhscnt1 or lhscnt2!=rhscnt2:#非终结符个数要相同
+            idx2 = idx2 + 1
+            continue
+        if newrule[idx1].left == newrule[idx2].left:
+            rhs = transone(newrule[idx2].right)
+            for lhs in lhslist:                                                    
+                aim = lhs == rhs
+                #p = time.perf_counter()
+                proveflag = prove(aim)
+                #q = time.perf_counter()
+                #timerecord.append(q-p)
+                if proveflag:
+                    print(newrule[idx1].GetRuleSign())
+                    print(newrule[idx2].GetRuleSign())
+                    proved_cnt = proved_cnt + 1
+                    #newrule.pop(idx2)#pop时间代价大改用标签？
+                    #rulelen.pop(idx2)
+                    marks.append(idx2)
+                    idx2 = idx2 + 1
+                    break
+            if proveflag:
+                proveflag = False
+                continue
+            else:
+                idx2 = idx2+1
+                continue
+        else:
+            flag = True
+            changedlen = -1
+            #必然需要切换左指针
+            continue
+    #print(t)
+    retrule = []
+    for idx in range(len(newrule)):
+        if idx not in marks:
+            retrule.append(newrule[idx])
+    return proved_cnt,retrule
+
+
+            
+
+
+
+def checkDSL(dsl:DSL):#TODO:树状去重
     nonterm = dsl.nonterm
     term = dsl.term
     startterm = dsl.startterm
 
-    newrule = dsl.rule.copy()
+    newrule = dsl.rule.copy()#
     newi = 0
+    proved_cnt = 0
     while True:
-        newrule,flag,newi = checkrule(newrule,newi)
+        newrule,flag,newi,proved_cnt= checkrule(newrule,newi,proved_cnt)
         if not flag:
             break
     newdsl = DSL(nonterm,term,newrule,startterm)
-    return newdsl
+    return newdsl,proved_cnt
+
+def newcheckDSL(dsl:DSL):#近似
+    nonterm = dsl.nonterm
+    term = dsl.term
+    startterm = dsl.startterm
+    sortedr = dsl.DSLsignsort()
+    newrule = []
+    rulelen = []
+    for r in sortedr:
+        newrule.append(dsl.DSLsign[r].copy())
+        rulelen.append(dsl.DSLsign[r].GetOpNum())
+    proved_cnt,newrule = newcheckrule(newrule,rulelen)
+    newdsl = DSL(nonterm,term,newrule,startterm)
+    return newdsl,proved_cnt
+    
+
+
 '''
 rule =[] 
 rule1 = Rule("S",Node([Node([],"S"),Node([],"S")],"+"))
@@ -508,6 +798,7 @@ rule.append(rule3)
 rule.append(rule4)
 rule.append(rule5)
 rule.append(rule6)
+'''
 '''
 rule =[] 
 rule1 = Rule("S",Node([],'x'))
@@ -541,13 +832,13 @@ rule.append(rule14)
 
 
 dsl0 = DSL(nonterm,term,rule,"S")
-#dsl0.dslprint()
-#print(gg)
 
+
+t0=time.perf_counter() 
 #print('----------------dsl1----------------')
-dsl1 = extendDSL(dsl0,rule)
-#dsl1.dslprint()
-#print(gg)
+dsl1 = extendDSL(dsl0,rule,1)
+dsl1.dslprint()
+print(gg)
 
 t1 = time.perf_counter()
 gap1 = t1 - t0
@@ -561,8 +852,8 @@ print(gg)
 dsl1_.newprint()
 print(gg)
 dsl1_.secondprint()
-
-
+'''
+'''
 print('----------------dsl2----------------')
 dsl2 = extendDSL(dsl1_,rule)
 dsl2.dslprint()
@@ -579,8 +870,9 @@ print(gg)
 dsl2_.newprint()
 print(gg)
 dsl2_.secondprint()
+'''
 
-
+'''
 #print(timerecord)
 print("max:",max(timerecord),"\nmin:",min(timerecord),"\nmean:",mean(timerecord),"\nsum:",sum(timerecord))
 cnt = 0
@@ -590,10 +882,10 @@ for t in timerecord:
 print("time>10ms:",cnt," total:",len(timerecord))
 print("time used for gen:",gap1)
 print("time used for check:",gap2)
-print("time used for gen and check2:",gap3)
+#print("time used for gen and check2:",gap3)
 sys.stdout=old  #还原系统输出
 f.close()
-
+'''
 
 
 

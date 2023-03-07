@@ -1,0 +1,86 @@
+1.检查他人实现的obe有没有类似吉老师写的cache结构
+2.多层以非终结符形式的工程实现
+
+直接找到的eusolver中实现了两种obe，其中一个(memoryless)可以正常运行初始文法以及修改后的文法，对于源码的阅读后，初步结论是没有找到类似的cache结构，甚至也没有obe本来理论上应该有的对于同一个非终结符内部去重的操作，怀疑只是一个加了观察等价法的朴素枚举，似乎也符合它的名字。它仅仅是对于generate出的新的term都过一遍cex，如果满足的cex集合和已有的程序都不同就保留这个term。可能正是因为他没有任何的优化，所以在吉老师版本obe里能几十秒内跑出来的mpg_guard2等在这个版本里求解时间过大，实验下来的结果是吉老师版本1min不到解决的mpg_guard2在他这里跑了四五个小时未能出结果。（他最后得到的是(- _arg_0 (ite (< (- 1 _arg_2) _arg_0) 1 _arg_1))这个程序，和标准答案规模上还差两个运算符）
+不过对于更简单的测试（如直接将三个输入相加得到结果），修改前的文法和修改后的文法平均时间代价对比接近0.05019：0.04847，修改后的文法略微快一些，可能是因为既然没有了非终结符的内部去重，也自然没有了重复对生成的程序执行输入，而枚举的过程可能由于文法的修改有所改善.
+generator_factory = enumerators.RecursiveGeneratorFactory()
+TermSolver = termsolvers.PointlessTermSolver
+
+classic 看名字好像是更经典的实现 但是实际测试发现无法运行初始文法或者修改后的文法，且阅读源码后发现后续的生成term以及观察等价的部分是共用的，二者有所区别的两个类需要更进一步的debug分析（暂时未修复这个求解器）
+generator_factory = enumerators.PointDistinctGeneratorFactory(specification)
+TermSolver = termsolvers.PointDistinctTermSolver
+看名字没看出啥来
+
+obe作为一个需要优化剪枝才可以在相对不那么trivial的测试上运行的求解方法，有吉老师这一部分实现优化的可能才能真正跑起来。如果要进一步确认“有没有他人实现的obe有cache结构”，应该只能再找找不同人复现的obe观察源码。我感觉不同人实现的有的烂有的好好像也很正常（
+
+-----------------
+关于非终结符实现多层，相比较于之前函数方法的实现（这也是吉老师给我留的接口），有一些工程上的问题需要另外和吉老师讨论#TODO
+注：为什么要以非终结符实现，函数有什么问题？就像eusolver里需要识别出ite condition ......并把condition收集起来用于合一器的工作，全都以函数方式重写后失去了显式的ite condition 语句，虽然也可以通过修改eusolver的实现让他接受识别函数形式的分支语句，如果能直接以非终结符形式写出修改后的文法可能更符合大多数求解器的文法要求。
+
+
+需要考虑的求解方法有？obe，eusolver，polygen，其他基于枚举的？
+if condition S S 保留 测试！
+[检查函数形式的表现] 有问题需要修改函数形式与非终结符形式一致 等吉老师回应
+[对于中间得到了去重后的结果，给定一种标准的输出格式用于中间储存] 免得每次都要重新跑去重 json？ 2
+[任意层任意展开的工程实现][还差一个贝叶斯搜索的方法] 少数训练集 尝试展开一部分在训练集上观察效果 如果效果不好则回退（需要一个copy方法？） 1
+[去重方法的优化 之前提过的树形优化] 3
+[编码测试集 参数个数和constraints][在吉老师benchmark上的修改 实验设定] 由于参数个数不同 需要跑一个参数个数多的文法 直接包含参数少的部分 
+重构代码（
+（有什么提高performance的方法 benchmark偏好？结合律产生巨大差异 max sum15）
+
+计划：POPL太卷了（ pldi 50%为界 ooplsa 10月底
+
+吉老师投popl的一个工作：
+改进了cegis采样算法 选反例
+review：
+提升效果不足（10%-30%）  rebuttal：对所有技术有用的 
+论文细节看不懂
+
+实现了多层后可以观察在吉老师或者在这个版本的eusolver（这是跑的起来的）的表现
+另外提醒熊老师下午软分课建微信群 比如设个2.的闹钟（如果那时候我睡着了忘了提醒的话）
+
+solvers = [
+            #("LIA Unification", lia_unification_solver),
+            #("STD Unification", std_unification_solver),
+            #("Classic Esolver", classic_esolver),
+            ("Memoryless Esolver", memoryless_esolver)
+            ]
+
+for term in bunch:
+            if transform_term is not None:
+                term = transform_term(term)
+            sig = self._compute_term_signature(term)
+            #print("---1")
+            #print(sig)
+            #print("---2")
+            if (sig in signature_to_term or sig.is_empty()):
+                continue
+            signature_to_term[sig] = term
+            self.full_signature = self.full_signature | sig
+            if sig.is_full():
+                self.one_full_signature = True
+                
+def term_signature(self, term, points):
+        #print("22222222222222222222222")
+        eval_ctx = self.eval_ctx
+        if len(self.synth_funs) > 1:
+            assert exprs.is_application_of(term, ',')
+            interpretations = term.children
+            for func, interpretation in zip(self.synth_funs, interpretations):
+                eval_ctx.set_interpretation(func, interpretation)
+        else:
+            eval_ctx.set_interpretation(self.synth_funs[0], term)
+
+        retval = []
+        for point in points:
+            eval_ctx.set_valuation_map(point)
+            try:
+                r = evaluation.evaluate_expression_raw(self.canon_spec, eval_ctx)
+                # print(exprs.expression_to_string(term), "is", r, "on", [ p.value_object for p in point ])
+                # print(eval_ctx.eval_stack_top)
+                retval.append(r)
+            except (basetypes.PartialFunctionError, basetypes.UnboundLetVariableError):
+                # Exceptions may be raised when applying partial functions like div, mod, etc
+                retval.append(False)
+
+        return retval         

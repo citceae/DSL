@@ -1,0 +1,32 @@
+S->x 
+S->y 
+S->z 
+S->0 
+S->1 
+S->(+ x S )
+S->(+ y S )
+S->(+ z x )
+S->(+ z y )
+S->(+ z z )
+S->(+ z (+ S S ))
+S->(+ z (- S S ))
+S->(+ z (ite B S S ))
+S->(+ 0 (+ S S ))
+S->(+ 1 x )
+S->(+ 1 y )
+S->(+ 1 z )
+S->(+ 1 1 )
+S->(+ 1 (+ S S ))
+S->(+ 1 (- S S ))
+S->(+ 1 (ite B S S ))
+S->(+ (+ S S )S )
+S->(+ (- S S )S )
+S->(+ (ite B S S )S )
+S->(- S S )
+S->(ite B S S )
+B->(and B B )
+B->(or B B )
+B->(not B )
+B->(< S S )
+B->(<= S S )
+B->(= S S )

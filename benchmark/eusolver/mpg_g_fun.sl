@@ -1,23 +1,17 @@
 (set-logic LIA)
 
-(define-fun func1 ((X Int) ) Int X )
-(define-fun func2 ((Y Int) ) Int Y )
-(define-fun func3 ((Z Int) ) Int Z )
 (define-fun func4 ((a1 Int) (a2 Int) ) Int (+ a1 a2 ))
 (define-fun func5 ((a1 Int) (a2 Int) ) Int (- a1 a2 ))
 (define-fun func6 ((b1 Bool) (a1 Int) (a2 Int) ) Int (ite b1 a1 a2 ))
 (synth-fun eq1 ( (x Int) (y Int) (z Int) ) Int
-    ((Start Int ((func1 X)
-    		 (func2 Y)
-    		 (func3 Z)
+    ((Start Int (x
+    		 y
+    		 z
                  0
                  1
                  (func4 Start Start)
                  (func5 Start Start)
                  (func6 StartBool Start Start)))
-     (X Int (x))
-     (Y Int (y))
-     (Z Int (z))
      (StartBool Bool ((and StartBool StartBool)
                       (or  StartBool StartBool)
                       (not StartBool)

@@ -1,0 +1,93 @@
+citceae@citceaeZen:~/ISTool1024/ISTool/build/executor$ ./run_sygus /home/citceae/DSL/benchmark/version4/tests/mpg_guard2_manual_full.sl /home/citceae/DSL/benchmark/version4/obeouts/mpg_guard2_manual_full.out obe
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1101 08:36:58.548863  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.548899  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.548902  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.548903  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.548904  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.548905  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.548907  6594 weighted_obe.cpp:248] eq1@Start: 5
+I1101 08:36:58.548910  6594 solver.cpp:25] Candidate result {eq1:Param0}
+I1101 08:36:58.556401  6594 solver.cpp:33] Counter example [0,-1,0]
+I1101 08:36:58.556461  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.556463  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.556464  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.556465  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.556468  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.556468  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.556469  6594 weighted_obe.cpp:248] eq1@Start: 5
+I1101 08:36:58.556473  6594 solver.cpp:25] Candidate result {eq1:1}
+I1101 08:36:58.562649  6594 solver.cpp:33] Counter example [0,-2,2]
+I1101 08:36:58.562851  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.562853  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.562855  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.562856  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.562857  6594 weighted_obe.cpp:248] eq1@N5: 16
+I1101 08:36:58.562860  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.562860  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.562861  6594 weighted_obe.cpp:248] eq1@Start: 31
+I1101 08:36:58.562862  6594 weighted_obe.cpp:248] eq1@StartBool: 48
+I1101 08:36:58.562873  6594 solver.cpp:25] Candidate result {eq1:-(Param0,Param1)}
+I1101 08:36:58.568861  6594 solver.cpp:33] Counter example [0,1,0]
+I1101 08:36:58.570508  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.570511  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.570513  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.570514  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.570515  6594 weighted_obe.cpp:248] eq1@N5: 136
+I1101 08:36:58.570516  6594 weighted_obe.cpp:248] eq1@N6: 96
+I1101 08:36:58.570518  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.570519  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.570520  6594 weighted_obe.cpp:248] eq1@Start: 296
+I1101 08:36:58.570521  6594 weighted_obe.cpp:248] eq1@StartBool: 416
+I1101 08:36:58.570565  6594 solver.cpp:25] Candidate result {eq1:ite(<(Param0,Param2),Param2,1)}
+I1101 08:36:58.576721  6594 solver.cpp:33] Counter example [0,-2,0]
+I1101 08:36:58.588362  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.588369  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.588371  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.588373  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.588374  6594 weighted_obe.cpp:248] eq1@N5: 633
+I1101 08:36:58.588375  6594 weighted_obe.cpp:248] eq1@N6: 896
+I1101 08:36:58.588376  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.588377  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.588378  6594 weighted_obe.cpp:248] eq1@Start: 2148
+I1101 08:36:58.588380  6594 weighted_obe.cpp:248] eq1@StartBool: 1985
+I1101 08:36:58.588678  6594 solver.cpp:25] Candidate result {eq1:ite(<(Param0,Param1),Param1,-(Param0,Param1))}
+I1101 08:36:58.595333  6594 solver.cpp:33] Counter example [0,-1,2]
+I1101 08:36:58.684012  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:36:58.684024  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:36:58.684026  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:36:58.684027  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:36:58.684029  6594 weighted_obe.cpp:248] eq1@N5: 3513
+I1101 08:36:58.684031  6594 weighted_obe.cpp:248] eq1@N6: 4910
+I1101 08:36:58.684031  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:36:58.684032  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:36:58.684033  6594 weighted_obe.cpp:248] eq1@Start: 12689
+I1101 08:36:58.684036  6594 weighted_obe.cpp:248] eq1@StartBool: 10973
+I1101 08:36:58.686137  6594 solver.cpp:25] Candidate result {eq1:ite(<(Param0,+(Param1,Param2)),Param1,-(Param0,Param1))}
+I1101 08:36:58.692513  6594 solver.cpp:33] Counter example [3,1,2]
+I1101 08:37:02.091220  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:37:02.091235  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:37:02.091240  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:37:02.091243  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:37:02.091245  6594 weighted_obe.cpp:248] eq1@N5: 101877
+I1101 08:37:02.091248  6594 weighted_obe.cpp:248] eq1@N6: 107780
+I1101 08:37:02.091253  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:37:02.091255  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:37:02.091259  6594 weighted_obe.cpp:248] eq1@Start: 318704
+I1101 08:37:02.091261  6594 weighted_obe.cpp:248] eq1@StartBool: 308188
+I1101 08:37:02.400475  6594 solver.cpp:25] Candidate result {eq1:+(Param0,ite(<(0,+(Param1,Param2)),Param1,-(Param0,Param1)))}
+I1101 08:37:02.409421  6594 solver.cpp:33] Counter example [-1,-1,2]
+I1101 08:37:57.488171  6594 weighted_obe.cpp:246] Construct num:
+I1101 08:37:57.488188  6594 weighted_obe.cpp:248] eq1@N1: 1
+I1101 08:37:57.488190  6594 weighted_obe.cpp:248] eq1@N2: 1
+I1101 08:37:57.488191  6594 weighted_obe.cpp:248] eq1@N3: 1
+I1101 08:37:57.488193  6594 weighted_obe.cpp:248] eq1@N5: 1257850
+I1101 08:37:57.488194  6594 weighted_obe.cpp:248] eq1@N6: 880524
+I1101 08:37:57.488195  6594 weighted_obe.cpp:248] eq1@N7: 1
+I1101 08:37:57.488198  6594 weighted_obe.cpp:248] eq1@N8: 1
+I1101 08:37:57.488198  6594 weighted_obe.cpp:248] eq1@Start: 3441348
+I1101 08:37:57.488200  6594 weighted_obe.cpp:248] eq1@StartBool: 3784558
+I1101 08:38:02.834215  6594 solver.cpp:25] Candidate result {eq1:+(Param0,ite(<(-(0,Param0),+(Param1,Param2)),Param1,-(0,Param1)))}
+7 {eq1:+(Param0,ite(<(-(0,Param0),+(Param1,Param2)),Param1,-(0,Param1)))}
+64.3099
+

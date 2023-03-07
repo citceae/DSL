@@ -1,0 +1,2 @@
+6 {f:ite(<(Param0,Param1),-1,ite(<(Param1,Param0),1,0))}
+4.2428340000

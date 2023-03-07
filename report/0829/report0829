@@ -1,0 +1,82 @@
+原始eusolver 跑修改后的会引发runtimeerror
+检验后发现只要将（+ Start Start）移除 即使加入了该产生式手动展开后的结果也无法成功 似乎是受求解器规定的程序大小的规则影响枚举过程会出现问题
+修改前后走的枚举路径都差很多的样子
+LIA在修改后压根不产生结果？
+okay, massaging = full_lia_grammars(grammar_map) 
+    print(okay)
+    if not okay:
+        raise UnsuitableSolverException('LIA Unification Solver: Could not get LIA full grammar')
+
+ans = grammars.identify_lia_grammars(sf, grammar)
+
+        #if ( len(fr.children) == 2 and
+        #        all( [ type(c) == NTRewrite for c in fr.children ]) and
+        #        all( [ c.non_terminal == start for c in fr.children ])):
+        #    funcs.add(fr.function_info.function_name)
+	if ('+' not in funcs or not has_ite):
+        	return None
+        
+	ite_cond_nt = fr.children[0].non_terminal
+文法自带的检查如：
+1.检验 + start start是否存在
+2.确认ite bool 后面两项必须是start start（暂未修改）
+3.假设只存在一条ite语句 仅对该语句的条件进行分析
+...
+对于文法的检查认为直接修改后的文法不是LIA了
+诸如此类的检查使得如果将求解器当做黑盒 修改后的文法容易跑不起来
+
+将如上检查做了放宽后，由于该检验是需要遍历文法的，文法大小会使求解总时间上升
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/mpg_guard2.sl
+(define-fun eq1 ((x Int) (y Int) (z Int)) Int
+     (ite (or (= 0 (+ y y)) (< (+ z (+ x y)) 1)) (+ (- 0 y) x) (+ y x)))
+time: 0.0718369550013449
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/mpg_guard2_nonnewv.sl
+(define-fun eq1 ((x Int) (y Int) (z Int)) Int
+     (ite (< (+ z (+ x y)) 1) (+ (- 0 y) x) (+ y x)))
+time: 0.089562635999755
+
+mpg_guard2:0.0718369550013449
+mpg_guard2_nonnewv:0.089562635999755
+上下区别：
+修改了and or not的识别（所以最后输出的结果也变得一样了）针对于上第3条
+在检验语法符合LIA过程之外再加一个新的计时
+
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/mpg_guard2_nonnewv.sl
+time without check: 0.03666762600187212
+(define-fun eq1 ((x Int) (y Int) (z Int)) Int
+     (ite (or (= 0 (+ y y)) (< (+ z (+ x y)) 1)) (+ (- 0 y) x) (+ y x)))
+time: 0.07691326100029983
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/mpg_guard2_nonv4.sl
+time without check: 0.03666809999776888
+(define-fun eq1 ((x Int) (y Int) (z Int)) Int
+     (ite (or (= 0 (+ y y)) (< (+ z (+ x y)) 1)) (+ (- 0 y) x) (+ y x)))
+time: 0.07808016700073495
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/mpg_guard2.sl
+time without check: 0.03740745799950673
+(define-fun eq1 ((x Int) (y Int) (z Int)) Int
+     (ite (or (= 0 (+ y y)) (< (+ z (+ x y)) 1)) (+ (- 0 y) x) (+ y x)))
+time: 0.0728496379997523
+citceae@citceaeZen:~/eusolver-main$ 
+
+mpg_guard2:总时间：0.0728496379997523 去掉检验语法所需时间：0.03740745799950673
+mpg_guard2_nonnewv:总时间：0.07691326100029983 去掉：0.03666762600187212
+mpg_guard2_nonv4:总时间：0.07808016700073495 去掉：0.03666809999776888
+去掉检验语法所需时间后，修改后的版本比初始版本少0.001左右的时间，提升比例为1/37
+
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/qm_neg_2.sl 
+time without check: 0.014859880000017256
+(define-fun qm-foo ((x Int) (y Int)) Int
+     (ite (and (< x 0) (< y 0)) 1 0))
+time: 0.029729597000027752
+citceae@citceaeZen:~/eusolver-main$ ./eusolver benchmarks/cit/qm_neg_2_nonnewv.sl 
+time without check: 0.01435462599999937
+(define-fun qm-foo ((x Int) (y Int)) Int
+     (ite (and (< x 0) (< y 0)) 1 0))
+time: 0.03290806000006796
+
+qm_neg2:0.014859880000017256
+qm_neg2_nonnewv:0.01435462599999937
+0.0005/0.0148=1/30
+
+TODO：把展开层数更多的文法进行测试 可能遇到的问题，不符合该版本eusolver的语法规定
+

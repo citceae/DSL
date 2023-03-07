@@ -1,0 +1,70 @@
+原DSL+composed oprator！！
+自己丰富化DSL succ(X)
+直接拿已有的数据集划分 bitvector eusolver  做一些手动的实验
+
+1.不管是自己丰富化DSL还是运用composed operator，都需要一个手动定义新的operator语义的过程。如字符串的前缀函数str.prefix(end)，虽然它形式上等价于str.substr(0,end)，但是如果只是加入了一个新的非终结符N->str.substr(0,Int)，首先DSL文法里不允许0出现在展开式参数的位置，只能表达成N->str.substr(N1,Int),N1->0,其次这样合成出来的还是会以substr形式出现在结果中。又如composed oprator如果直接手动组合一些的话，如 S -> F1 S S|F2 S S,组合得到F语义上=F1 (F2 S S) S加入文法，即S -> F1 S S|F2 S S|F S S S ，目标程序为F1 (F2 x y) z时，原文法认为目标程序规模为5，两次展开+3个常数，新文法只有额外定义了F的语义才可以得到目标规模为4，否则S -> F1 S S|F2 S S|N，N->F1 (F2 S S) S 仍然会认为目标规模为5不节约搜索空间，也只有手动encode语义才可以给出如F1 (F2 S S) z这一种节约了一次展开的表达。
+对于语义的encode在哪里？当前的用新的非终结符表达composed oprator应该是不可行的。
+2.那是不是其实就是沿着lxy原来的路，先去挖掘频繁模式，然后在加入了频繁模式对应operator的文法上统计表达式使用频率，给出一个逐步精化的文法？
+对应的，本来想的是手动compose一些operator加到文法里，主要问题是应该需要额外encode语义，没有额外定义为新的operator在求解器返回结果中不会显示。以及没有频繁模式的指导这样手动的compose不能将其中一些参数简化为常数。
+
+1116讨论结果：
+频繁模式挖掘参考前面lxy的过程 用maxflash得到k个解得到可以compose的rule
+修改了composed rule的规模衡量一致为1之后（getweight return 1即可）
+1.可以考虑用nonterminal表达composed rule 可能会遇到同样的枚举重复的问题 可以试试怎么表达 好像还是要有非终结符不算规模这一条
+初始：S -> F1 S S|F2 S S，想要compose出F = F1 (F2 S S) S加入文法
+表达方式
+S -> F1 S S|F2 S S|F 
+F -> F1 T S
+T -> F2 S S
+or
+S -> F1 S S|F2 S S|F 
+F -> function(S S S)
+or
+S -> F1 S S|F2 S S|function(S S S)
+
+2.可以考虑用def function 表达composed rule 不过这个就没有去重l
+3.encode语义如前所述
+-----------------
+TODO:
+LIA和SLIA上先根据 样本集的解（目前只有一个解）观察解的结构 提取公共结构compose到语法中
+样本集自己选 compose到语法中的形式表达成上述后两个or（不知道有没有什么区别）
+encode语义是后续可能可以采用的方式
+
+17212077中不能有"/"这个参数 obe会报semanticerror
+31753108 semanticerror
+func形式加了early-search的效果 在修改了return 1之后在19558979上有提升（但是这个提升是基于恰好撞见了结果的 后续是会下降的）
+str.indexof(x,y,0) 第零次出现是什么意思
+有一些是constraint example不够多
+
+
+频率应该在哪些测试上取得（需要在一个测试集上观察用了哪些）
+最后在验证集上实验逐步精细化的效果
+逐步精细化的主要问题 什么时候判断出应该给出一个新的解 尤其是在一些本来解得就比较快的case上 （预期时间？）
+
+目前做了的实验：
+1.挖掘频繁模式 测试集1 1-10
+2.加入后求各个表达式使用概率 测试集2 1-20
+3.逐步精细化 21-30
+
+21:killed
+22:killed
+25:killed
+这几个不是已发现的pattern可以帮助解决的
+
+逐步精细化的主要问题 什么时候判断出应该给出一个新的解 尤其是在一些本来解得就比较快的case上 （预期时间？）【重要】
+如果给的时间限制超过了它原有的求解时间 那么一次timeout之后的时间代价就已经超过了原来的
+
+除了频率 还可以根据start的类型判断 如start是bool的那么bool部分的就大概率不能删虽然在别的case上bool用的比较少
+
+目前小实验的问题：测试集1 2数量太少泛化能力不足 验证集里用的都是测试集1 2发现的用的比较少的 （可以通过扩大测试集规模 发现更多pattern解决）
+
+目前小规模测试（origin求解时间小于1）有10_345用到了firstidx从而加速了 timeout设置为10
+中规模以上的测试7_3落后，7_4加速,7_5加速，6_1显著加速，6_2,6_3，6_4,6_5巨大加速(compose导致的early reach的作用) timeout设置为100
+6原始时间需要110s，如果将timeout设置为10s，可以在6_1timeout后找到利用6_2只需要1s多得到解
+7原始57s，目前最优7_4需要31s 不存在当前5个版本下一个合适的timeout时间（当然目前不是对于7来说的最优）
+而在测试集中，如1，可以很快得到结果 0.002 vs 0.0313
+
+TODO：
+更多测试集和pattern（自动化）
+timeout以外的信息 或者 一般的 我们的timeout应该规定为什么
+对于规模较大的测试 一旦用上了compose的东西或者删除了较多不影响的 加速效果会比较明显

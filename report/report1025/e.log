@@ -1,0 +1,44 @@
+citceae@citceaeZen:~/ISTool1024/ISTool/build/executor$ ./run_sygus /home/citceae/DSL/benchmark/version4/tests/e.sl /home/citceae/DSL/benchmark/version4/obeouts/e.out obe
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1025 09:18:57.958351  8557 weighted_obe.cpp:246] Construct num:
+I1025 09:18:57.958387  8557 weighted_obe.cpp:248] eq1@ONE: 1
+I1025 09:18:57.958388  8557 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:18:57.958390  8557 weighted_obe.cpp:248] eq1@X: 1
+I1025 09:18:57.958391  8557 weighted_obe.cpp:248] eq1@Y: 1
+I1025 09:18:57.958392  8557 weighted_obe.cpp:248] eq1@Z: 1
+I1025 09:18:57.958395  8557 solver.cpp:25] Candidate result {eq1:Param0}
+I1025 09:18:57.965435  8557 solver.cpp:33] Counter example [0,1,0]
+I1025 09:18:57.965469  8557 weighted_obe.cpp:246] Construct num:
+I1025 09:18:57.965471  8557 weighted_obe.cpp:248] eq1@ONE: 1
+I1025 09:18:57.965472  8557 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:18:57.965473  8557 weighted_obe.cpp:248] eq1@X: 1
+I1025 09:18:57.965476  8557 weighted_obe.cpp:248] eq1@Y: 1
+I1025 09:18:57.965476  8557 weighted_obe.cpp:248] eq1@Z: 1
+I1025 09:18:57.965479  8557 solver.cpp:25] Candidate result {eq1:Param1}
+I1025 09:18:57.971736  8557 solver.cpp:33] Counter example [1,0,0]
+I1025 09:18:57.971771  8557 weighted_obe.cpp:246] Construct num:
+I1025 09:18:57.971772  8557 weighted_obe.cpp:248] eq1@ONE: 1
+I1025 09:18:57.971774  8557 weighted_obe.cpp:248] eq1@Start: 5
+I1025 09:18:57.971776  8557 weighted_obe.cpp:248] eq1@X: 1
+I1025 09:18:57.971776  8557 weighted_obe.cpp:248] eq1@Y: 1
+I1025 09:18:57.971777  8557 weighted_obe.cpp:248] eq1@Z: 1
+I1025 09:18:57.971781  8557 solver.cpp:25] Candidate result {eq1:1}
+I1025 09:18:57.977542  8557 solver.cpp:33] Counter example [2,0,0]
+I1025 09:18:57.977650  8557 weighted_obe.cpp:246] Construct num:
+I1025 09:18:57.977653  8557 weighted_obe.cpp:248] eq1@ONE: 1
+I1025 09:18:57.977654  8557 weighted_obe.cpp:248] eq1@Start: 21
+I1025 09:18:57.977656  8557 weighted_obe.cpp:248] eq1@X: 1
+I1025 09:18:57.977658  8557 weighted_obe.cpp:248] eq1@Y: 1
+I1025 09:18:57.977658  8557 weighted_obe.cpp:248] eq1@Z: 1
+I1025 09:18:57.977664  8557 solver.cpp:25] Candidate result {eq1:+(Param0,Param1)}
+I1025 09:18:57.983577  8557 solver.cpp:33] Counter example [0,0,1]
+I1025 09:18:57.983820  8557 weighted_obe.cpp:246] Construct num:
+I1025 09:18:57.983824  8557 weighted_obe.cpp:248] eq1@ONE: 1
+I1025 09:18:57.983826  8557 weighted_obe.cpp:248] eq1@Start: 65
+I1025 09:18:57.983829  8557 weighted_obe.cpp:248] eq1@X: 1
+I1025 09:18:57.983830  8557 weighted_obe.cpp:248] eq1@Y: 1
+I1025 09:18:57.983832  8557 weighted_obe.cpp:248] eq1@Z: 1
+I1025 09:18:57.983844  8557 solver.cpp:25] Candidate result {eq1:+(Param0,+(Param1,Param2))}
+4 {eq1:+(Param0,+(Param1,Param2))}
+0.032208
+

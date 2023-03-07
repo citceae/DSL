@@ -1,0 +1,56 @@
+citceae@citceaeZen:~/ISTool1012/ISTool/build/executor$ ./run_sygus /home/citceae/DSL/benchmark/version2/tests/mpg_guard2_nonnewv.sl /home/citceae/DSL/benchmark/version2/obeouts/mpg_guard2_nonnewv.out obe
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1019 05:06:42.343432 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.343473 12452 weighted_obe.cpp:224] eq1@Start: 5
+I1019 05:06:42.343477 12452 solver.cpp:25] Candidate result {eq1:Param0}
+I1019 05:06:42.350754 12452 solver.cpp:33] Counter example [0,-1,0]
+I1019 05:06:42.350795 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.350796 12452 weighted_obe.cpp:224] eq1@Start: 5
+I1019 05:06:42.350800 12452 solver.cpp:25] Candidate result {eq1:1}
+I1019 05:06:42.357543 12452 solver.cpp:33] Counter example [0,-2,2]
+I1019 05:06:42.357687 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.357690 12452 weighted_obe.cpp:224] eq1@Start: 45
+I1019 05:06:42.357699 12452 solver.cpp:25] Candidate result {eq1:-(Param0,Param1)}
+I1019 05:06:42.363709 12452 solver.cpp:33] Counter example [0,1,0]
+I1019 05:06:42.398993 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.399008 12452 weighted_obe.cpp:224] eq1@Nonterm14: 4290
+I1019 05:06:42.399010 12452 weighted_obe.cpp:224] eq1@Nonterm6: 2141
+I1019 05:06:42.399011 12452 weighted_obe.cpp:224] eq1@Nonterm7: 2237
+I1019 05:06:42.399013 12452 weighted_obe.cpp:224] eq1@Start: 3237
+I1019 05:06:42.399013 12452 weighted_obe.cpp:224] eq1@StartBool: 6431
+I1019 05:06:42.399821 12452 solver.cpp:25] Candidate result {eq1:ite(<(Param0,Param2),Param2,1)}
+I1019 05:06:42.406469 12452 solver.cpp:33] Counter example [0,-2,0]
+I1019 05:06:42.529091 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.529106 12452 weighted_obe.cpp:224] eq1@Nonterm14: 11876
+I1019 05:06:42.529109 12452 weighted_obe.cpp:224] eq1@Nonterm6: 5895
+I1019 05:06:42.529109 12452 weighted_obe.cpp:224] eq1@Nonterm7: 6791
+I1019 05:06:42.529110 12452 weighted_obe.cpp:224] eq1@Start: 8693
+I1019 05:06:42.529111 12452 weighted_obe.cpp:224] eq1@StartBool: 17771
+I1019 05:06:42.531657 12452 solver.cpp:25] Candidate result {eq1:ite(<(Param0,Param1),Param1,-(Param0,Param1))}
+I1019 05:06:42.538051 12452 solver.cpp:33] Counter example [0,-1,2]
+I1019 05:06:42.947659 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:42.947679 12452 weighted_obe.cpp:224] eq1@Nonterm14: 28623
+I1019 05:06:42.947680 12452 weighted_obe.cpp:224] eq1@Nonterm6: 14131
+I1019 05:06:42.947681 12452 weighted_obe.cpp:224] eq1@Nonterm7: 19521
+I1019 05:06:42.947682 12452 weighted_obe.cpp:224] eq1@Start: 25219
+I1019 05:06:42.947685 12452 weighted_obe.cpp:224] eq1@StartBool: 42754
+I1019 05:06:42.967265 12452 solver.cpp:25] Candidate result {eq1:ite(<(Param0,+(Param1,Param2)),Param1,-(Param0,Param1))}
+I1019 05:06:42.974565 12452 solver.cpp:33] Counter example [3,1,2]
+I1019 05:06:51.577447 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:06:51.577466 12452 weighted_obe.cpp:224] eq1@Nonterm14: 420532
+I1019 05:06:51.577468 12452 weighted_obe.cpp:224] eq1@Nonterm6: 209166
+I1019 05:06:51.577469 12452 weighted_obe.cpp:224] eq1@Nonterm7: 331396
+I1019 05:06:51.577471 12452 weighted_obe.cpp:224] eq1@Start: 371568
+I1019 05:06:51.577472 12452 weighted_obe.cpp:224] eq1@StartBool: 629698
+I1019 05:06:52.217065 12452 solver.cpp:25] Candidate result {eq1:+(Param0,ite(<(0,+(Param1,Param2)),Param1,-(Param0,Param1)))}
+I1019 05:06:52.224376 12452 solver.cpp:33] Counter example [-1,-1,2]
+I1019 05:07:30.387192 12452 weighted_obe.cpp:222] Construct num:
+I1019 05:07:30.387214 12452 weighted_obe.cpp:224] eq1@Nonterm14: 1302580
+I1019 05:07:30.387216 12452 weighted_obe.cpp:224] eq1@Nonterm6: 647616
+I1019 05:07:30.387218 12452 weighted_obe.cpp:224] eq1@Nonterm7: 1289849
+I1019 05:07:30.387219 12452 weighted_obe.cpp:224] eq1@Start: 1694350
+I1019 05:07:30.387220 12452 weighted_obe.cpp:224] eq1@StartBool: 1950196
+I1019 05:07:33.370105 12452 solver.cpp:25] Candidate result {eq1:+(Param0,ite(<(0,+(Param0,+(Param1,Param2))),Param1,-(0,Param1)))}
+7 {eq1:+(Param0,ite(<(0,+(Param0,+(Param1,Param2))),Param1,-(0,Param1)))}
+51.0341
+

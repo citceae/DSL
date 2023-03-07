@@ -1,0 +1,2 @@
+15 {combine:ite(<(Param1,-(Param0,Param2)),Param0,+(Param1,Param2))}
+42.9959370000

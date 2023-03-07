@@ -1,0 +1,61 @@
+1.修改了原先obe实现的一个bug：应该按照到Start的距离来枚举非终结符的项
+如 Start -> (+ N Start) 在目标程序规模为k时，只需要枚举k-1及以下规模的N而不需要枚举规模为k的
+在这个修改下，obe整体效率大幅提升
+对一些其他task做了实验
+s3_g5x相比于s3落后，226：198，s3_g5x中的+(S S)是可以附加额外知识去掉的（即之前的+ S S的展开规则只需要保留一半），去掉后得到s3_g5
+s3_g5相比s3提升了不少，152s:198s，进一步把（- S S）提取为已有的非终结符后，去重后的construct数目有下降时间仍然是153s，但是由于去掉了(+ x (+S S))影响了枚举路径，中间candidate有较大差异 但是最后目标程序相同
+在较为简单的s2对应修改有轻微下降 s2:s2_g5 = 4.2s：4.5s 下降
+在mpg_guard2上有轻微提升 mpg_guard2:修改后=33：31
+在eusolver上mpg_guard2的修改对应的结果有增有减需要进一步分析（复杂改动效率下降 简单改动效率上升）
+总结：原先的道路结果，obe的非简单任务上表现较好 简单任务的效果差可能是因为打不过有损的动态obe剪枝；eusolver结果参差（样本不大）
+
+2.不断给出更精细的DSL方案遇到的问题
+a.
+基础的setting：更精细的DSL的基础应该为如s3_g5.sl这种已经展开了一些的DSL文法，在一些train_set上对每一个task得到k个解分析解使用每一个产生式的情况给出一个产生式被应用的概率。
+b.
+（1）修改求解器（obe）对每一个task给出k个解（调整obe去重和验证记录解的顺序） 可以在obe上修改；
+（2）由k个解的情况反推用的是哪一条产生式或者说哪些产生式，需要一个parser 主要问题是因为现在展开后的DSL并不是一个操作符唯一对应一个表达式，实现有点麻烦（更好的可能是在求解器内部记录下每个解的路径，即应用了哪些产生式规则）  上周没想好这个怎么实现能通用一些
+（3）train_set的问题，如果直接在task A上给出k个解 根据这k个解修改了A的DSL（有损）然后再将修改后的DSL应用到 task A上观察结果，这样的问题是没有generalization；理论上应该是在一些文法完全相同的train_set上分析k个解*train_set数目，给出整体的文法对于每一条产生式的应用概率。LIA上只有+ - ite规则太少，其他的展开之后的带有常数或者参数的规则不通用。（带有常数或者参数的规则是不是目标删除对象？？如果是的话，可以认为是在对这一类同样输入但是不同constraint的问题做分析，那应该自己构造一些类似问题（即不同的constraint）作train_set）；考虑generalization应该重点只关注相对丰富DSL上operator的组合结果 比如在SLIA上应用
+研究了一下dreamcoder
+（4）基于（3）没有想清楚的一个点【重要】关于tasks，Dreamcoder有类似的需要根据task和对应的program提取公共结构加入新的library，它的做法是在当前library随机采样程序p，并根据p的运行结果生成input-output pair作为task，利用task-p数据训练调整程序合成的serach算法（神经网络参数），这个阶段称为dream，而后在wake阶段，在这些新generate出的task上做合成，对结果程序提取公共结构；
+借鉴dreamcoder的做法，我们的数据集可不可以由这种采样生成？（为了避免采样的概率就称为表达式应用次数的概率，应当期望采样得到的程序会有一个更小的运用了其他产生式结构的等价的解 此时constraint应该为input-output）
+
+dreamcoder发现新的公共结构加入library的过程 vs 我们提前规定好的DSL展开层数（当然也可以动态增加）相当于构造出了一些oprator
+dreamcoder通过训练神经网络调整合成搜索算法的过程 vs 我们按照产生式频率逐步丰富DSL的过程 它们可能直接把程序搜索顺序改变的更加符合task的预期解 我们仍然需要从较小的程序上开始枚举（obe的底子）
+觉得dreamcoder这样调整搜索顺序的方法更为彻底
+
+总结：
+数据集应该是什么？（LIA+采样生成的新的类似task？SLIA？） 
+初始DSL应该是什么？（展开多层的DSL or 原DSL+composed oprator？）（熊老师好像提到什么pair的组合？类似于直接compose一些新的oprater而不是展开吗？）
+
+原DSL+composed oprator！！
+自己丰富化DSL succ(X)
+直接拿已有的数据集划分 bitvector eusolver  做一些手动的实验
+
+1.不管是自己丰富化DSL还是运用composed operator，都需要一个手动定义新的operator语义的过程。如字符串的前缀函数str.prefix(end)，虽然它形式上等价于str.substr(0,end)，但是如果只是加入了一个新的非终结符N->str.substr(0,Int)，首先DSL文法里不允许0出现在展开式参数的位置，只能表达成N->str.substr(N1,Int),N1->0,其次这样合成出来的还是会以substr形式出现在结果中。又如composed oprator如果直接手动组合一些的话，如 S -> F1 S S|F2 S S,组合得到F语义上=F1 (F2 S S) S加入文法，即S -> F1 S S|F2 S S|F S S S ，目标程序为F1 (F2 x y) z时，原文法认为目标程序规模为5，两次展开+3个常数，新文法只有额外定义了F的语义才可以得到目标规模为4，否则S -> F1 S S|F2 S S|N，N->F1 (F2 S S) S 仍然会认为目标规模为5不节约搜索空间，也只有手动encode语义才可以给出如F1 (F2 S S) z这一种节约了一次展开的表达。
+对于语义的encode在哪里？当前的用新的非终结符表达composed oprator应该是不可行的。
+2.那是不是其实就是沿着lxy原来的路，先去挖掘频繁模式，然后在加入了频繁模式对应operator的文法上统计表达式使用频率，给出一个逐步精化的文法？
+对应的，本来想的是手动compose一些operator加到文法里，主要问题是应该需要额外encode语义，没有额外定义为新的operator在求解器返回结果中不会显示。以及没有频繁模式的指导这样手动的compose不能将其中一些参数简化为常数。
+
+1116讨论结果：
+频繁模式挖掘参考前面lxy的过程 用maxflash得到k个解得到可以compose的rule
+修改了composed rule的规模衡量一致为1之后（getweight return 1即可）
+1.可以考虑用nonterminal表达composed rule 可能会遇到同样的枚举重复的问题 可以试试怎么表达 好像还是要有非终结符不算规模这一条
+初始：S -> F1 S S|F2 S S，想要compose出F = F1 (F2 S S) S加入文法
+表达方式
+S -> F1 S S|F2 S S|F 
+F -> F1 T S
+T -> F2 S S
+or
+S -> F1 S S|F2 S S|F 
+F -> function(S S S)
+or
+S -> F1 S S|F2 S S|function(S S S)
+
+2.可以考虑用def function 表达composed rule 不过这个就没有去重l
+3.encode语义如前所述
+
+TODO:
+LIA和SLIA上先根据 样本集的解（目前只有一个解）观察解的结构 提取公共结构compose到语法中
+样本集自己选 compose到语法中的形式表达成上述后两个or（不知道有没有什么区别）
+encode语义是后续可能可以采用的方式

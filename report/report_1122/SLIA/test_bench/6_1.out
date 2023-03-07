@@ -1,0 +1,2 @@
+2 {f:str.replace(str.replace(Param0,str.substr(Param0,str.indexof(Param0,">",1),1),""),str.substr(str.replace(Param0,str.substr(Param0,str.indexof(Param0,">",1),1),""),0,str.indexof(str.replace(Param0,str.substr(Param0,1,+(1,+(1,1))),""),">",1)),"")}
+35.1888010000

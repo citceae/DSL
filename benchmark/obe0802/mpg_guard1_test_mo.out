@@ -1,2 +1,2 @@
-7 {eq1:+(Param0,ite(<(Param0,-(1,Param1)),-(0,Param1),Param1))}
-237.8717210000
+6 {eq1:+(Param0,ite(<(0,+(Param0,Param1)),Param1,-(0,Param1)))}
+60.3329230000

@@ -1,0 +1,2 @@
+72 {eq1:ite(<(Param0,-(-(1,Param1),Param2)),-(Param0,Param1),+(Param0,Param1))}
+65.8623060000
