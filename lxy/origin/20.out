@@ -1,2 +1,2 @@
 2 {f:str.substr(Param0,+(1,+(1,str.len("Name"))),str.len(Param0))}
-1.8103600000
+15.0850400000

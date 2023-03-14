@@ -1,2 +1,2 @@
 1 {f:str.replace(str.substr(Param0,0,str.indexof(Param0,"<",1)),str.++("<",str.++("b",">")),"")}
-153.9138920000
+153.9138920000 killed

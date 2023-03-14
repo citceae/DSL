@@ -1,2 +1,2 @@
 2 {f:str.replace(Param0,str.replace("that",Param0,""),"")}
-0.0082480000
+0.1262040000
