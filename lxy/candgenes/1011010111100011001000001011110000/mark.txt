@@ -1,0 +1,12 @@
+grad boost 
+params = {
+    "n_estimators": 500,
+    "max_depth": 4,
+    "min_samples_split": 5,
+    "learning_rate": 0.01,
+    "loss": "squared_error",
+}
+genetic runs = 30
+point = 3.160907016239282 (rank 3)
+1011010111100011001000001011110000
+true point = 2.780578214206986

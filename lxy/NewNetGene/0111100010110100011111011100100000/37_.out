@@ -1,0 +1,2 @@
+3 {f:str.substr(str.++(" ",Param0),1,+(-1,str.indexof(Param0,"Inc",1)))}
+199.7171590000

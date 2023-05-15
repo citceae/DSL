@@ -1,0 +1,2 @@
+2 {f:ite(str.suffixof("US",Param0),str.replace(Param0,str.++(" ","US"),""),str.replace(Param0,str.++(" ","CAN"),""))}
+0.1890300000

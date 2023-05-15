@@ -1,0 +1,2 @@
+1 {f:str.substr(str.substr(Param0,1,-(str.indexof(Param0,"<",1),1)),+(1,1),str.len(str.substr(Param0,1,-(str.indexof(Param0,"<",1),1))))}
+235.6412470000

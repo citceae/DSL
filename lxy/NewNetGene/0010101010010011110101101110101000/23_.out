@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,str.indexof(str.replace(str.replace(Param0,"/"," "),"/",int.to.str(str.len(Param0))),"/",1),str.len(Param0))}
+96.6859690000

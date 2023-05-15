@@ -1,0 +1,2 @@
+1 {f:getsuffix(Param0,succ(succ(str.len("Name"))))}
+0.1831190000

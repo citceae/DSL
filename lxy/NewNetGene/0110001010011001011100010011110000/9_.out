@@ -1,0 +1,2 @@
+4 {f:str.++(str.substr(Param0,0,5),str.substr(Param0,5,-(0,str.to.int(str.substr(Param0,5,1)))))}
+48.3544150000

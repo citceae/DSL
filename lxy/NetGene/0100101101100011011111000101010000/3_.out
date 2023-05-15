@@ -1,0 +1,2 @@
+4 {f:str.prefixof(Param0,str.replace(Param0,"overhead",""))}
+0.1161410000

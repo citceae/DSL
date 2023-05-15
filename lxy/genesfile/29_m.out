@@ -1,0 +1,2 @@
+1 {f:doubleconcat("Dr."," ",getprefix(Param0,firstidx(Param0," ")))}
+0.0687960000

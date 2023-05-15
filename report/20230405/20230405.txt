@@ -1,0 +1,102 @@
+1.sklearn
+2.weka
+3.xgBoost
+
+
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html
+1.1 Gradient Boosting regression
+mse = 0.18左右
+grad boost 
+params = {
+    "n_estimators": 500,
+    "max_depth": 4,
+    "min_samples_split": 5,
+    "learning_rate": 0.01,
+    "loss": "squared_error",
+}
+genetic runs = 30
+point = 3.1718385764479287 (rank 1)
+1011010111100001001000001001110000
+true point = 3.0851289092452214(该基因在测试集中出现了（刚好随机到），在测试集中测得的平均加速比为3.20，有一定随机效果 ？？ 会不会因为有这个case才让大部分都在以3.20左右为上界）
+
+point = 3.16480844788854 (rank 2)
+1011110101101011001001000001110000
+true point = 2.5764831568339477 
+
+point = 3.160907016239282 (rank 3)
+1011010111100011001000001011110000
+true point = 2.780578214206986
+
+遗传算法预测的最后大量的基因得分差别不大 3.16以上三个 剩下3.1以上满目都是
+实际上测出来的结果上可以估计3.X应该已经是当前基因组合下的上界 
+主要问题：不能估计表现好的基因出现在前k个的置信度 只能看实验结果
+
+重复了一次（指reg也重新训练一次（参数相同） 再重新跑遗传算法）
+观察上述三个基因是否稳定出现 是否仍然得分高 上述三个都没随机到（
+如果新的前三个能有3.X的真实加速比就也还可以
+1011010111100011001001001101000000:         3.145389593441479 rank1 2.4891248629150557
+1011010111100011001000001110000000:         3.1452327383951983 rank2 2.374196456230926
+1011010101110001001001000010100000:         3.144262273729351 rank3 2.979468213548097
+好像也还行（
+
+
+1.2 线性
+普通最小二乘 模型结果固定 受分割测试集训练集随机因子影响 mse可以是0.6或者106
+岭回归 test_mse = 0.4314 train_mse = 0.0011
+贝叶斯岭回归
+The mean squared error (MSE) on test set: 0.4611
+The mean squared error (MSE) on train set: 0.1715
+
+
+1.3 svm
+看文档要求正则化
+默认核函数为rbf
+未正则化的结果：
+The mean squared error (MSE) on test set: 0.5508
+The mean squared error (MSE) on train set: 0.4487
+
+正则化的结果：(最后的01feature去掉不用）
+The mean squared error (MSE) on test set: 0.5620
+The mean squared error (MSE) on train set: 0.5166
+
+
+（不同核函数）
+换用线性核或者多项式核MSE高的离谱（）
+
+
+
+2.weka怎么像个木马病毒（调不出来）
+
+3.xgboost
+1.n_estimators = 100 出现了上千个不同基因同样point
+1011100101101101001000001101100000:         3.2058353
+1111100111101110011100001001000000:         3.2058353
+1110010101101110111100001111110000:         3.2058353
+1110100101100100011100001001011000:         3.2058353
+
+2.换了一套参数 
+reg = XGBR(max_depth = 10, learning_rate = 0.1, n_estimators = 1000, reg_alpha = 0.05, subsample = 0.8, gamma = 0, colsample_bylevel = 0.8,objective = 'reg:squarederror').fit(train_data,train_target)
+The mean squared error (MSE) on test set: 0.1954
+The mean squared error (MSE) on train set: 0.0001
+3.2以上的三个
+1011011111100011011100001101110000:         3.2249207    rank1 3.2482615306828646
+1111111101100001011100001001110000:         3.206708     rank2 3.356166818746681
+1111011101100001011100001001110000:         3.2067056    rank3 3.7426999119528013（？）
+
+
+
+总结：xgboost和普通gradboost看起来可以得到还不错的结果 xgbr里还有更多参数可以调整 也可以有更多数据点
+
+层次化dsl考虑应用上（timeout相关）
+把初始的频繁模式挖掘重新整理成自动化 整理代码
+
+
+
+迭代式更新模型 （每一次细粒度筛选都可以得到新的样本点）
+应该要完整精确的数据 虽然慢 
+xgboost:随机森林+plus 
+svm 线性
+
+XGBoost[2] (eXtreme Gradient Boosting) is an open-source software library which provides a regularizing gradient boosting framework for C++, Java, Python,[3] R,[4] Julia,[5] Perl,[6] and Scala. It works on Linux, Windows,[7] and macOS.[8] From the project description, it aims to provide a "Scalable, Portable and Distributed Gradient Boosting (GBM, GBRT, GBDT) Library". It runs on a single machine, as well as the distributed processing frameworks Apache Hadoop, Apache Spark, Apache Flink, and Dask.[9][10]
+
+

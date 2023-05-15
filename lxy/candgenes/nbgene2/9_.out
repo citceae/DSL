@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,0,+(1,ite(str.prefixof(Param0,str.substr(Param0,0,+(3,5))),4,5)))}
+24.6756010000

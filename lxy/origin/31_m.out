@@ -1,0 +1,2 @@
+1 {f:str.++(str.replace(subsconcat(Param0,1,firstidx(Param0," "),2)," ","."),".")}
+0.0964690000

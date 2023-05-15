@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,0,-(str.indexof(str.replace("|","",Param0),"|",1),0))}
+1.7230020000

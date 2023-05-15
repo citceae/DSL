@@ -1,0 +1,2 @@
+3 {f:str.replace(str.replace(Param0,Param0,Param0),"that",ite(str.suffixof(Param0,"that"),Param0,""))}
+42.7318600000

@@ -1,0 +1,2 @@
+2 {f:ite(=(0,str.to.int(str.at(Param0,1))),Param0,Param1)}
+1.4609080000

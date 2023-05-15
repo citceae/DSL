@@ -10,6 +10,7 @@
 					(str.replace ntString ntString ntString)
 					(str.at ntString ntInt)
 					(int.to.str ntInt)
+					(ite ntBool ntString ntString)
 					(str.substr ntString ntInt ntInt)
 				   ))
   (ntInt Int (0 1 2

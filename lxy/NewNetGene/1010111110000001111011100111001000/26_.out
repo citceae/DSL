@@ -1,0 +1,2 @@
+4 {f:ite(str.suffixof("that",Param0),str.substr(Param0,0,str.len("that")),str.substr(Param0,str.len(ite(str.prefixof("that",Param0),"that","")),str.len(Param0)))}
+165.4680350000

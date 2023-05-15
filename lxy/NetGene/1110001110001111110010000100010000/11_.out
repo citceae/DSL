@@ -1,0 +1,2 @@
+3 {f:+(2,str.to.int(int.to.str(+(2,+(3,-(3,str.len(Param1)))))))}
+97.1339360000

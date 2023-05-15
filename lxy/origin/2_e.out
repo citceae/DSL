@@ -1,0 +1,2 @@
+4 {f:ite(str.contains(Param0,"US"),getprefix(Param0,pred(firstidx(Param0,"US"))),ite(str.contains(Param0,"CAN"),getprefix(Param0,pred(firstidx(Param0,"CAN"))),Param0))}
+0.7331450000

@@ -1,0 +1,2 @@
+3 {f:str.substr(Param0,-(1,1),-(str.indexof(str.++(Param0,Param0),Param0,1),3))}
+171.5308460000

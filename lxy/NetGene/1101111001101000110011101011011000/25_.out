@@ -1,0 +1,2 @@
+2 {f:ite(str.prefixof(int.to.str(1),int.to.str(str.len(str.++(Param1,Param2)))),Param0,Param1)}
+13.4838000000

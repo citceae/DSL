@@ -1,14 +1,14 @@
-0 0  - 577
-0 0 6  - 531
-0 1  - 1060
-0 1 -1 1  - 646
-0 1 -1 1 2  - 566
-0 1 2  - 914
-0 1 2 -1 -1 1  - 474
-0 1 2 -1 -1 1 2  - 466
-0 1 2 -1 3  - 585
-0 1 2 -1 4  - 486
-0 1 3  - 738
+0 0  - 577			str.++ str.++ S S S/ str.++ S str.++ S S
+0 0 6  - 531			str.++ str.++ S S S/ str.++ S str.++ S S
+0 1  - 1060			str.++ str.substr S N N S/ str.++ S str.substr S N N
+0 1 -1 1  - 646		str.++ str.substr S N N str.substr S N N
+0 1 -1 1 2  - 566		str.++ str.substr S N N str.substr P0 N N
+0 1 2  - 914			str.++ str.substr P0 N N S/...
+0 1 2 -1 -1 1  - 474		str.++ str.substr P0 N N str.substr S N N
+0 1 2 -1 -1 1 2  - 466		str.++ str.substr P0 N N str.substr P0 N N(P0 may be a N)
+0 1 2 -1 3  - 585		str.++ str.substr P0 0 N S/str.++ str.substr P0 N 0 S/str.++ S ...
+0 1 2 -1 4  - 486		str.++ str.substr P0 1 N S/str.++ str.substr P0 N 1 S/str.++ S ...
+0 1 3  - 738			str.++ str.substr S 0 N S/str.++ str.substr S N 0 S/str.++ S ...
 0 1 3 -1 -1 1  - 471
 0 1 3 -1 -1 1 2  - 431
 0 1 4  - 586

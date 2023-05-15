@@ -1,0 +1,2 @@
+4 {f:str.++(str.substr(Param0,0,str.to.int(str.at(int.to.str(str.len(Param0)),0))),str.substr(Param0,1,+(str.indexof(Param0,"|",1),-1)))}
+223.7770000000

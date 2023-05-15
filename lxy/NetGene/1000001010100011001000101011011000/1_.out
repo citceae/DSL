@@ -1,0 +1,2 @@
+2 {f:str.replace(str.substr(Param0,+(str.indexof(Param0," ",1),0),str.len(Param0)),"",str.at(Param0,0))}
+4.4823250000

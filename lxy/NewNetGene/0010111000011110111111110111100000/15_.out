@@ -1,0 +1,2 @@
+2 {f:-(str.indexof(Param0,ite(str.suffixof(Param1,Param0)," ",""),1),-1)}
+3.2698290000

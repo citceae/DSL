@@ -1,0 +1,2 @@
+3 {f:str.replace(Param0,str.substr(Param0,str.indexof(Param0,"that",0),str.indexof(str.++("that",Param0),Param0,0)),"")}
+108.2602050000

@@ -1,0 +1,2 @@
+1 {f:subsconcat(Param0,+(1,1),-(1,pred(pred(pred(-1)))),str.len(Param0))}
+0.0941270000

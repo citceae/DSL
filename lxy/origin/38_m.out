@@ -1,0 +1,2 @@
+1 {f:doubleconcat(Param0,",",str.++(" ",Param1))}
+1.9897430000

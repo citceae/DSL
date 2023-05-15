@@ -1,0 +1,2 @@
+3 {f:ite(str.suffixof(Param1,Param0),3,ite(str.suffixof(str.at(Param0,3),Param1),2,1))}
+159.9876520000

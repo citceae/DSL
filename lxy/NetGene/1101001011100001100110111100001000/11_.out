@@ -1,0 +1,2 @@
+3 {f:str.indexof(Param1,str.at(str.++(str.++(Param1,Param1),Param1),str.indexof(Param0,"_",1)),1)}
+252.1339870000

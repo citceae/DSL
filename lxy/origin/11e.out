@@ -1,0 +1,2 @@
+3 {f:ite(str.suffixof(Param1,Param0),3,ite(str.prefixof(str.at(Param0,0),Param1),1,2))}
+0.0496150000 删掉了int的ite所以11_跑不了

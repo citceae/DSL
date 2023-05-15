@@ -1,0 +1,2 @@
+2 {f:ite(str.contains(Param0,"ssp."),getprefix(Param0,pred(firstidx(Param0,"ssp."))),getprefix(Param0,firstidx(Param0," ")))}
+0.1295510000

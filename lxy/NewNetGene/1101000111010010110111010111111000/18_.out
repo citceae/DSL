@@ -1,0 +1,2 @@
+3 {f:str.substr(str.++(" ",Param0),1,+(str.indexof(str.++(Param0,"|"),"|",1),0))}
+91.8034070000

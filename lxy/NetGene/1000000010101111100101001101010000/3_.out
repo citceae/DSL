@@ -1,0 +1,2 @@
+4 {f:str.prefixof(int.to.str(str.indexof(Param0,"overhead",0)),Param0)}
+0.9538560000

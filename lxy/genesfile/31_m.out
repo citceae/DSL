@@ -1,0 +1,2 @@
+1 {f:doubleconcat(getprefix(Param0,1),".",str.++(sesuffix(Param0," ",0,1,1),"."))}
+0.1289650000

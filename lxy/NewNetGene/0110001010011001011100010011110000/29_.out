@@ -1,0 +1,2 @@
+1 {f:str.replace(str.substr(Param0,0,str.indexof(Param0," ",1)),str.substr(Param0,0,0),str.replace(" ",str.substr(Param0,0,0),"Dr."))}
+221.3561290000

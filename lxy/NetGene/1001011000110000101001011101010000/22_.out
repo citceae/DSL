@@ -1,0 +1,2 @@
+3 {f:ite(str.contains(Param0,"windows"),"windows",ite(str.contains(Param0,"microsoft"),"microsoft","mac"))}
+110.4857700000

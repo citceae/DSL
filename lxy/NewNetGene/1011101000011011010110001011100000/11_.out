@@ -1,0 +1,2 @@
+3 {f:-(3,str.len(int.to.str(ite(str.suffixof(Param1,Param0),-1,str.len(Param1)))))}
+44.0462820000

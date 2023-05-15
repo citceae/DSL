@@ -1,0 +1,2 @@
+1 {f:str.replace(str.replace(Param0,"-","."),"-",".")}
+0.8123720000

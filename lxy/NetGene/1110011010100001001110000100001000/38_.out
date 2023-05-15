@@ -1,0 +1,2 @@
+1 {f:str.replace(Param1,str.at(" ",1),str.replace(" ",str.at(" ",1),str.replace(",",str.at(" ",1),Param0)))}
+305.0866790000

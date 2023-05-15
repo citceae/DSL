@@ -1,0 +1,2 @@
+1 {f:str.replace(Param2,"",str.replace("/n","",str.replace(Param1,"",str.replace("/n","",Param0))))}
+42.7765430000

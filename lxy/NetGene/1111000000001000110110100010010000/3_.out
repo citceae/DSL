@@ -1,0 +1,2 @@
+4 {f:=(1,ite(str.contains(Param0,"overhead"),0,1))}
+2.7319040000

@@ -1,0 +1,2 @@
+3 {f:str.substr(str.++(" ",Param0),1,+(4,str.len(int.to.str(+(1,str.len(Param0))))))}
+108.7856770000

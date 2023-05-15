@@ -1,0 +1,2 @@
+3 {f:str.replace(Param0,str.substr(Param0,str.indexof(Param0,"that",0),str.len(ite(str.contains("that",Param0),"","that"))),"")}
+96.7658920000

@@ -1,0 +1,2 @@
+2 {f:ite(str.contains("/",str.substr(Param0,1,1)),getsuffix(Param0,pred(pred(pred(str.len(Param0))))),getsuffix(Param0,pred(-(str.len(Param0),firstidx(Param0,"/")))))}
+274.9537110000

@@ -1,0 +1,2 @@
+4 {f:str.contains(Param0,int.to.str(str.indexof(Param0,"overhead",0)))}
+1.0154200000

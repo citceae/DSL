@@ -1,0 +1,2 @@
+2 {f:str.prefixof("9999999",str.substr(Param0,str.indexof(Param0,"9999999",1),str.len(Param0)))}
+0.3121740000

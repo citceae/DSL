@@ -1,0 +1,2 @@
+4 {f:ite(str.contains(Param0,"that"),ite(str.contains("that",Param0),Param0,ite(str.contains("that",getprefix(Param0,1)),getsuffix(Param0,str.len("that")),getprefix(Param0,str.len("that")))),Param0)}
+0.0390850000

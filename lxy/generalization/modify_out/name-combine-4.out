@@ -1,0 +1,2 @@
+1 {f:str.++(str.++(Param1,","),str.++(str.++(" ",str.substr(Param0,0,1)),"."))}
+22.8047210000

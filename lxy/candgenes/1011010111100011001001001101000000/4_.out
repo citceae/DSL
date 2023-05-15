@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,0,str.indexof(Param0," ",str.len(str.replace("ssp.","","ssp."))))}
+6.7065320000

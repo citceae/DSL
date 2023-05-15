@@ -1,0 +1,2 @@
+2 {f:ite(str.contains(Param0," "),str.substr(Param0,0,str.indexof(Param0,"|",1)),Param0)}
+0.9364000000

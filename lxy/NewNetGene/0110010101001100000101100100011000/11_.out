@@ -1,0 +1,2 @@
+3 {f:str.to.int(str.at(int.to.str(str.indexof(str.substr(Param0,2,str.len(Param0)),Param1,3)),1))}
+199.4554850000

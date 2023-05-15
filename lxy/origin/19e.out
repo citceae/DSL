@@ -1,0 +1,2 @@
+4 {f:ite(str.suffixof("Inc",Param0),str.replace(Param0,str.++(" ","Inc"),""),ite(str.suffixof("Company",Param0),str.replace(Param0,str.++(" ","Company"),""),ite(str.suffixof("Corporation",Param0),str.replace(Param0,str.++(" ","Corporation"),""),str.replace(Param0,str.++(" ","Enterprises"),""))))}
+0.9095800000

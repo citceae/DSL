@@ -1,0 +1,2 @@
+3 {f:str.substr(Param0,-(1,1),+(-1,str.indexof(Param0,"Inc",1)))}
+34.7203800000

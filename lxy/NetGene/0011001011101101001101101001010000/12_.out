@@ -1,0 +1,2 @@
+1 {f:str.replace(Param0,str.substr(Param0,str.len(str.replace(" ",""," ")),str.len(str.++(str.++(" "," ")," "))),"")}
+6.7088840000

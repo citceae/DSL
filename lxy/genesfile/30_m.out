@@ -1,0 +1,2 @@
+2 {f:sesuffix(Param1,"_",1,1,str.len(Param1))}
+1.0524680000

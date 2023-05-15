@@ -1,0 +1,2 @@
+1 {f:str.++(str.++(Param0,","),str.replace(Param1,int.to.str(-(0,1))," "))}
+6.5637060000

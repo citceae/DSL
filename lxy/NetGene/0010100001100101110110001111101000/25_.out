@@ -1,0 +1,2 @@
+2 {f:ite(str.suffixof(int.to.str(str.indexof(Param0,Param2,1)),Param0),Param1,Param0)}
+2.0032320000

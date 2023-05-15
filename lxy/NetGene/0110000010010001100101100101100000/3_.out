@@ -1,0 +1,2 @@
+5 {f:str.suffixof(int.to.str(str.indexof(Param0,"overhead",0)),Param0)}
+0.2538890000

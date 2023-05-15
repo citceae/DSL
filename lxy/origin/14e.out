@@ -1,0 +1,2 @@
+5 {f:ite(=(Param1,1),str.at(Param0,0),ite(=(Param1,2),str.at(Param0,1),ite(=(Param1,3),str.at(Param0,2),ite(=(Param1,4),str.at(Param0,3),str.at(Param0,4)))))}
+0.0100240000

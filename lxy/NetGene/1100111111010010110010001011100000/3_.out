@@ -1,0 +1,2 @@
+5 {f:str.suffixof(Param0,ite(str.suffixof("overhead",Param0),"",Param0))}
+5.9378680000

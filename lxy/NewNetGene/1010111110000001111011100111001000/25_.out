@@ -1,0 +1,2 @@
+2 {f:ite(str.suffixof(str.substr(Param2,1,1),Param2),Param1,Param0)}
+0.0706200000

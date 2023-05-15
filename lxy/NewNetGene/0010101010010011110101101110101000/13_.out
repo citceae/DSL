@@ -1,0 +1,2 @@
+2 {f:=(1,str.len(int.to.str(str.indexof(Param0,"9999999",1))))}
+0.0849540000

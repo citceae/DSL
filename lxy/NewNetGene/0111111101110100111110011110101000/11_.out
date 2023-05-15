@@ -1,0 +1,2 @@
+3 {f:+(str.indexof(Param1,str.replace(Param1,str.substr(Param1,+(3,3),2),""),0),2)}
+262.6630710000

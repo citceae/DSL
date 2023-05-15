@@ -1,0 +1,2 @@
+2 {f:ite(str.contains(Param0," "),getprefix(Param0,firstidx(Param0,"|")),Param0)}
+0.0216810000

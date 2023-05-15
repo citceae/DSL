@@ -1,0 +1,2 @@
+3 {f:+(1,-(str.len(Param0),str.len(str.replace(str.replace(Param0,"/n"," "),"/n"," "))))}
+24.3756420000

@@ -1,0 +1,2 @@
+1 {f:str.++(str.++(str.at(Param0,0),str.substr(str.replace(Param0," ","."),+(str.indexof(str.replace(Param0," ","."),".",0),0),2)),".")}
+228.5610680000

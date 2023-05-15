@@ -29,6 +29,8 @@ else:
 对比Dreamcoder的后续工作 拿它得到的DSL？？
 今天讲的一篇 两篇论文readlist
 
+给人做library 谢冰老师的学生已经毕业了（曹xx）
+
 TODO：
 0.读两篇论文考虑对比的方式
 1.重复实验 实验完整化自动化
@@ -36,15 +38,46 @@ TODO：
 3.检查fitness function是否有问题
 4.改fitness function（神经网络 feature）
 
-给人做library 谢冰老师的学生已经毕业了（曹xx）
 ----------------------------------------------
 0.library learning 见微信评论 另一篇还没看完（应该也是同样的topic 第一篇评论有和它的对比）
 1.实验自动化完整化的过程：
-	a.获取candidate基因后 生成所有测试集在该基因下的DSL编码（hardcode工作）
-	b.写好脚本运行所有测试生成对应文件夹
-	c.导出实验结果自动化？
+	a.获取candidate基因后 生成所有测试集在该基因下的DSL编码（hardcode工作）done
+	b.写好脚本运行所有测试生成对应文件夹 done
+	c.导出实验结果自动化？ 生成excel todo
 2.暂时先不管
-3.检查一下原本得分最高的文件完整跑下来的结果 0110001101101000110000000101110000
-4.尝试利用yzy的简单网络结构
+3.检查一下原本得分最高的文件完整跑下来的结果 0110001101101000110000000101110000 去掉了replace会在哪些地方效果好吗 整体结果见genesfile文件夹里的结果i_.out（timeout=500）
+	如对于训练集中的1，obe会使用str.replace来达到更快的效果 而maxflash提供的100个训练程序里并没有用到str.replace 可能是求解器的偏好问题(12也相同）还观察到训练集以外的有不少str.replace 所以那些在训练集里去掉str.replace的在内部得分挺高的
+	maxflash：str.++(str.substr(Param0,0,1),str.substr(Param0,str.indexof(Param0," ",0),str.len(Param0)))
+	obe：str.replace(Param0,str.substr(Param0,1,str.indexof(Param0," ",1))," ")
+	(constraint (= (f "John Doe") "J Doe"))
+	(constraint (= (f "Mayur Naik") "M Naik"))
+	(constraint (= (f "Nimit Singh") "N Singh"))
+4.尝试利用yzy的简单网络结构 pytorch入门在看
+
+再跑了40runs：现有的adhoc的适应度函数到后来区分度不够高 考虑使用类似于加速比的适应度函数
+0110001101100010110100000101110000
+0110001101100010110000000101110000 这俩是一样的因为唯一不同的那一位不发挥作用
+都把str.replace去掉了
+应该不用进一步细化实验
+
+加速比适应度下的选择： res = res + value2[i]/value1[i] 然后再求平均
+几乎全都去掉了str.replace
+
+结论：受训练集的一部分限制 maxflash得到的结果用于训练时可能有一些在obe上表现就不太好 （trainset的改进？）
+
+对原本的上一次得到的基因在maxflash上做一次细粒度检验：（受时间限制有一些没有完全跑满timeout就kill了）
+见origin中的im.out和i_m.out
+附带原有的得分高的见genesfile中的i_m.out(还没跑）
+中途感想：变差的很明显 有什么改进的example先看看的吗
+
+
+eusolver也跑了一部分 很多效果不错
+见origin中的ie.out和i_e.out
+有不少ie.out是killed而非timeout
+
+
+
+
+
 
 

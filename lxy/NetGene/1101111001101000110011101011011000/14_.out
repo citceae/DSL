@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,+(str.indexof(Param0,Param0,Param1),Param1),1)}
+0.5602830000

@@ -1,0 +1,2 @@
+4 {f:ite(str.contains(Param0,int.to.str(Param1)),ite(str.contains(Param0,int.to.str(0)),ite(str.contains(Param0,int.to.str(succ(Param1))),getprefix(Param0,firstidx(Param0,"-")),getsuffix(Param0,succ(firstidx(Param0,"-")))),getprefix(Param0,firstidx(Param0,"-"))),getsuffix(Param0,succ(firstidx(Param0,"-"))))}
+1.8398750000

@@ -1,0 +1,2 @@
+3 {f:ite(str.contains(Param0,"microsoft"),ite(str.contains(Param0,"windows"),"windows","microsoft"),"mac")}
+0.0026940000

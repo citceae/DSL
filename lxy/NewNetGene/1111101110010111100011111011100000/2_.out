@@ -1,0 +1,2 @@
+3 {f:str.replace(str.replace(Param0,"US","CAN"),str.replace("CAN",str.substr("CAN",1,0)," "),"")}
+45.9797810000

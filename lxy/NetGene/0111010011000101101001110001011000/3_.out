@@ -1,0 +1,2 @@
+4 {f:str.prefixof(str.at(Param0,str.indexof(Param0,"overhead",0)),"")}
+1.2013620000

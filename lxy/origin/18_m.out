@@ -1,0 +1,2 @@
+2 {f:doubleconcat(getprefix(Param0,1),getsuffix(Param0,-(0,firstidx(Param0,"|"))),str.substr(Param0,1,pred(firstidx(Param0,"|"))))}
+18.9437100000

@@ -1,0 +1,2 @@
+1 {f:getsuffix(Param1,succ(firstidx(Param1,"_")))}
+0.1849290000

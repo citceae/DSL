@@ -1,0 +1,2 @@
+2 {f:str.prefixof(int.to.str(-(str.len(Param0),str.len("9999999"))),"9999999")}
+0.1060290000

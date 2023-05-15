@@ -1,0 +1,2 @@
+4 {f:str.contains(Param0,str.replace(Param0,"overhead"," "))}
+0.0926360000

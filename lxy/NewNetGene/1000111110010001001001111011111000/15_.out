@@ -1,0 +1,2 @@
+2 {f:-(str.indexof(str.replace(Param0,Param1," ")," ",1),-1)}
+0.1708710000

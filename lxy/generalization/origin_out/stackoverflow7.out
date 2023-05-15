@@ -1,0 +1,2 @@
+2 {f:str.replace(Param0,str.++(" ",Param1),ite(str.suffixof(Param1,Param0),""," "))}
+30.8408200000

@@ -1,0 +1,2 @@
+2 {f:str.suffixof("9999999",str.replace(str.++(Param0,"9999999"),"9999999",Param0))}
+0.1355020000

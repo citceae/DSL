@@ -1,0 +1,2 @@
+1 {f:str.++(str.substr(Param0,0,+(1,1)),str.substr(Param0,+(1,+(1,+(1,+(1,1)))),str.len(Param0)))}
+148.3075570000

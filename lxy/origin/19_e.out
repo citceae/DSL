@@ -1,0 +1,2 @@
+5 {f:ite(str.contains(Param0,"Inc"),getprefix(Param0,pred(firstidx(Param0,"Inc"))),ite(str.contains(Param0,"Company"),getprefix(Param0,pred(firstidx(Param0,"Company"))),ite(str.contains(Param0,"Corporation"),getprefix(Param0,firstidx(Param0," ")),ite(str.contains(Param0,"Enterprises"),getprefix(Param0,succ(str.len("Company"))),Param0))))}
+1.7320850000

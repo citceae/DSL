@@ -1,0 +1,2 @@
+3 {f:getprefix(Param0,-(str.len(Param0),3))}
+2.0864730000

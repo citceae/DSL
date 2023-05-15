@@ -1,0 +1,2 @@
+3 {f:str.to.int(str.at(int.to.str(str.indexof(Param0,str.++(str.++(" ","_"),Param1),3)),1))}
+267.7366340000

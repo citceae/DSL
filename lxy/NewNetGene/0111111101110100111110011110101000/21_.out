@@ -1,0 +1,2 @@
+2 {f:ite(=(1,str.indexof(str.++(" ",Param0),"C0",1)),Param0,Param1)}
+4.5942330000

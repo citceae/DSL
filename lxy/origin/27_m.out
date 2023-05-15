@@ -1,0 +1,2 @@
+2 {f:str.substr(Param0,succ(succ(1)),pred(pred(pred(firstidx(Param0,"<")))))}
+1.5483140000

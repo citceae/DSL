@@ -1,0 +1,2 @@
+4 {f:=(1,ite(str.suffixof("overhead",Param0),0,1))}
+4.7155700000

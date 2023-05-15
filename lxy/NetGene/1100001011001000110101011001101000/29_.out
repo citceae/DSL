@@ -1,0 +1,2 @@
+1 {f:str.++(str.++("Dr."," "),str.substr(Param0,0,str.indexof(Param0," ",0)))}
+6.7679010000

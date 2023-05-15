@@ -1,0 +1,2 @@
+3 {f:str.replace(str.replace(Param0,Param0,Param0),"that",ite(str.contains("that",Param0),Param0,""))}
+8.1760030000

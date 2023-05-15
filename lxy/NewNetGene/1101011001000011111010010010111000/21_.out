@@ -1,0 +1,2 @@
+2 {f:ite(=(1,+(str.indexof(Param0,"C0",0),1)),Param0,Param1)}
+5.3399670000

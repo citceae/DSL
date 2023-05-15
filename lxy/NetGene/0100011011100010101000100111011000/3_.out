@@ -1,0 +1,2 @@
+5 {f:str.prefixof(str.at(str.++("some project","some project"),str.len(Param0)),Param0)}
+6.5571790000

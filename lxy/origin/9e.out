@@ -1,0 +1,2 @@
+6 {f:ite(str.contains(Param0,int.to.str(5)),ite(str.contains(Param0,int.to.str(2)),ite(=(1,str.to.int(str.at(Param0,5))),str.substr(Param0,0,5),ite(=(2,str.to.int(str.at(Param0,5))),str.substr(Param0,0,5),str.substr(Param0,0,+(1,5)))),str.substr(Param0,0,5)),str.substr(Param0,0,+(1,5)))}
+1.1110570000

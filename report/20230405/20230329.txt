@@ -1,0 +1,75 @@
+TODO:
+1.跑出一定数目的样例
+2.整理样例数据统计进入csv   feature-平均加速比的pair
+	feature：见笔记
+	平均加速比：利用随机样本对比原始数据作为近似的平均加速比（求几何平均）
+	统计每个的feature的脚本 如在trainset上的对应估算 删除了几个 增加了几个 构造出对应的feature
+	计算平均加速比的脚本
+3.应用sklearn weka等对其进行数据分析（分析的结果可以是一个feature-pair的函数帮助遗传算法部分迭代） 
+
+
+a.统计feature的脚本
+给定一个基因：
+feature=（在任务i上得到的最小目标程序估计的比*29，删除的产生式个数，添加的产生式个数，在训练集上无解的task个数，基因的本身编码（去掉限深后31位））
+读取文件夹名称获取基因done、genetic中getvalue后写一个新的getpoint、删除添加根据基因名直接获得done、无解task可以在getvalue中获得done、基因本身编码拆为31位 基因-feature的list
+输出的统计形式：造一个csv文件？可以试试
+读取文件夹名字done 输出到csv
+
+b.计算平均加速比的脚本
+读取文件夹名称 读取存在的.sl文件 检验对应的out文件获取时间 根据原始DSL的对应时间求出加速比求几何平均 （一方timeout另一方有的话直接按照设定好的timeout即time=300来计算）
+基因-平均加速比
+a,b合并在一起？ 给一个csv done
+
+
+大约两天时间构造了240个data=（feature，平均加速比） 大部分是采样7-8个task#
+c.应用工具进行分析试图得到一个function替换适应度函数部分（save_model load_model）
+sklearn 神经网络模型 MLPRegressor
+---------------------------------------------------
+#error
+#主要的观察是 
+#1.得到的数据里有许多目标平均加速比比较离谱（特别高或特别低） 每个平均7到8个测试有可能会撞大运
+#2.选取的feature也有一些看起来比较离谱 比如不少求最小程序的比例可能超过1e7倍
+#筛选数据？但是确实预期中如果变好的话期望是变好很多很多倍的
+#我们也不需要绝对拟合只需要相对大小关系合适 排序预测任务？预测排序正确的二元pair
+---------------------------------------------------------
+test_ratio=0.2
+sklearn数据正规化 基因编码会被正规化 这个不必要 去掉最后的基因编码之后依然在验证集上泛化的不太行 但是有可能是因为数据本身的不精确
+精确数据的平均加速比一共利用40个测试用例所有都比较得到 目前数据用的平均加速比大部分都是随机采样7-8个检验得到
+比如 某一个基因在40个测试用例中得到的平均加速比为1.757232454906955 取最差的八个得到0.035900896786765786 取最好的八个得到5.788739977697262
+
+
+d.再重新进行遗传算法获得较优的基因 应用得到的某一次训练的模型random_state = 17 adam 500*500 (正规化部分导致储存的模型并不能直接用） 先去掉正规化训练之后的模型看一眼代入遗传算法的效果
+分割得到了训练集和测试集 但是泛化到测试集看起来仍然一塌糊涂
+利用模型替换适应度函数部分 runs = 30 预测的加速比最高（5.0+）的实际测试下来只有1.40 
+
+采用了正规化之后 random_state = 42 adam 500*500 (feature同上述一样都是29+3维度）
+模型预测出了一堆8 9倍平均加速比的然而点进去发现一塌糊涂甚至不用进一步验证（如最高分9.3 见照片）
+次高分9.27 细粒度检验后真实平均加速比为2.15（虽然和9.27差的很远但是确实还行） 顺便上次展示的表格实际上平均加速比只有1.51
+再之后的得分大部分是9.1 9.0 但是不是很肯定到底多少是这个模型学到了的
+
+主要的问题：大量数据精确label代价太高  数据本身并不可靠 不充分 feature的构造主体依赖于对最小程序的估计 这个的量级在1e-6到1e7之间波动范围很大 训练用的平均加速比如前所述受随机选取的样例的影响比较重 这就导致feature-平均加速比之间的组合并不一定准确 进而误导模型 
+garbage in garbage out
+
+0.排序预测
+1.继续使用网络 或者 别的模型都要面对的数据不足 训练得到的模型可能准确度不够的问题 （多大时间代价的数据准备是可以接受的 每有一个timeout就是比如300s 如果40个任务一半timeout 一个数据点需要1.5h）
+2.其他feature，如产生式使用频率 对于append的产生式有什么别的label，人工设计一个适应度函数不需要精确数据点所以简单
+
+
+
+e.检验过程：由于上述获得平均加速比时已经用到了可能的所有测试，所以一要检验这个部分是不是本身效果好；二要检验完全没有接触的新验证集上效果如何，这里就需要新的硬编码（也可以先准备着）
+但是发现就在这个所有测试本身上检验效果就已经不好了（
+
+f.如果初始的训练集也改动了，就需要原来说的把频繁模式挖掘这一部分自动化程度变高（这个现在还没有头绪）
+
+
+
+迭代式更新模型 （每一次细粒度筛选都可以得到新的样本点）
+应该要完整精确的数据 虽然慢 
+xgboost:随机森林+plus 
+svm 线性
+申请台式机（
+
+XGBoost[2] (eXtreme Gradient Boosting) is an open-source software library which provides a regularizing gradient boosting framework for C++, Java, Python,[3] R,[4] Julia,[5] Perl,[6] and Scala. It works on Linux, Windows,[7] and macOS.[8] From the project description, it aims to provide a "Scalable, Portable and Distributed Gradient Boosting (GBM, GBRT, GBDT) Library". It runs on a single machine, as well as the distributed processing frameworks Apache Hadoop, Apache Spark, Apache Flink, and Dask.[9][10]
+
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html
+

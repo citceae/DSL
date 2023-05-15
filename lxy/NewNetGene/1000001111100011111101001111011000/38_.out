@@ -1,0 +1,2 @@
+1 {f:str.substr(str.++(str.++(" ",Param0),str.++(str.++(","," "),Param1)),1,str.len(str.++(str.++(" ",Param0),str.++(str.++(","," "),Param1))))}
+6.2252830000

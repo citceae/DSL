@@ -1,0 +1,2 @@
+2 {f:str.prefixof(str.at(Param0,1),Param1)}
+0.0066440000

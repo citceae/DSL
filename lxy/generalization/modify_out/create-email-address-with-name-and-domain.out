@@ -1,0 +1,2 @@
+1 {f:str.++(str.++(str.substr(Param0,0,1),Param1),str.replace(Param2,"","_"))}
+9.5671740000

@@ -1,0 +1,2 @@
+3 {f:str.replace(str.++(Param0,str.at(Param0,5)),str.substr(str.++(Param0,str.at(Param0,5)),4,5),str.at(Param0,4))}
+149.8267030000
