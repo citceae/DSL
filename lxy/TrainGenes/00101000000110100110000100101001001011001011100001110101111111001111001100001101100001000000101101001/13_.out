@@ -1,0 +1,4 @@
+1 {f:func49(Param0,str.to.int(str.++(int.to.str(1),int.to.str(0))),str.++("Name",Param0))}
+0.0000030000
+0.0000000000
+40.0423770000

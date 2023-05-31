@@ -1,0 +1,4 @@
+1 {f:str.replace(Param0,func4("/","/",Param0,0,str.indexof(Param0,"/",1)),"")}
+0.0000050000
+0.0000000000
+134.2401550000

@@ -47,7 +47,6 @@ This DB can also be converted to binary format if desired.
 	 	 -O for ordered mining
 		(default is embedded and unordered mining)
 
-嵌入是删除父树中的任意节点 诱导删除任意节点需一并删除后续节点
 The output has info about the freq trees at diff levels and the total
 time taken.
 

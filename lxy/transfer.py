@@ -1,9 +1,7 @@
 #str.substr(Param0,0,str.indexof(Param0," ",str.len(str.++("ssp.","ssp."))))
 #str.substr(Param0,+(1,str.indexof(Param0," ",0)),3)
 
-dict = {}
-
-def treetoarr(s1):
+def treetoarr(s1,dict1):
     outarr = []
     l1 = len(s1)
     i=0
@@ -18,12 +16,12 @@ def treetoarr(s1):
                 i=j
                 continue
             tmp = s1[i:j]
-            if tmp in dict:
+            if tmp in dict1:
                 pass
             else:
-                num = len(dict)
-                dict[tmp] = num 
-            val = dict[tmp]
+                num = len(dict1)
+                dict1[tmp] = num 
+            val = dict1[tmp]
             outarr.append(val)
             if s1[j]!='(':
                 outarr.append(-1)
@@ -31,8 +29,7 @@ def treetoarr(s1):
             i=j  
     return outarr
 
-dict2 = {}
-def treetoarr2(s1):#将字符串常量视为同一个参数
+def treetoarr2(s1,dict2):#将字符串常量视为同一个参数
     outarr = []
     l1 = len(s1)
     i=0
@@ -60,7 +57,53 @@ def treetoarr2(s1):#将字符串常量视为同一个参数
                 outarr.append(-1)
             j=j+1
             i=j  
-    return outarr
+    return outarr,dict2
+
+def getprogdict(trainset,path = "/mnt/d/code/DSL/lxy"):
+    dict1 = {}
+    dict2 = {}
+
+    # a,dict2 = treetoarr2('str.substr(Param0,+(1,str.indexof(Param0," ",0)),3)',dict2)
+    # print(a)
+    # quit()
+
+    s=[]
+    for i in trainset:
+        fname = path + "/trainset/" + str(i) + ".out" 
+        fo = open(fname,'r')
+        for line in fo.readlines():
+            s.append(line.lstrip()[:-1])
+        fo.close()
+
+    with open(path + '/allprog.txt','w') as f:
+        for si in s:
+            print(si,file=f)
+
+    outarrs = []
+    for si in s:
+        outarr,dict2 = treetoarr2(si,dict2)
+        outarrs.append(outarr)
+
+    with open(path + '/allarr.txt','w') as f:
+        for i in range(len(outarrs)):
+            outarr = outarrs[i]
+            outs = str(i)+' '+str(i)+' '+str(len(outarr))
+            for n in outarr:
+                outs = outs + ' ' + str(n)
+            print(outs,file=f)
+
+    with open(path + '/dict2.txt','w') as f2:
+        for key in dict2:
+            outs = key + ':' + str(dict2[key])
+            print(outs,file= f2)
+
+
+
+
+
+
+    
+
 
 '''
 s1 ='(-1,str.indexof(Param0,"overhead",0))'
@@ -138,42 +181,3 @@ s.append(s35)
 s.append(s36)
 #从文件中读取并添加
 '''
-
-s=[]
-for i in range(1,41):
-    fname = "/home/citceae/DSL/lxy/trainset/" + str(i) + ".out" 
-    fo = open(fname,'r')
-    for line in fo.readlines():
-        s.append(line.lstrip()[:-1])
-    fo.close()
-
-with open('/home/citceae/DSL/lxy/allprog.txt','a+') as f:
-    for si in s:
-        print(si,file=f)
-
-outarrs = []
-for si in s:
-    outarr = treetoarr2(si)
-    outarrs.append(outarr)
-
-with open('/home/citceae/DSL/lxy/allarr.txt','a+') as f:
-    for i in range(len(outarrs)):
-        outarr = outarrs[i]
-        outs = str(i)+' '+str(i)+' '+str(len(outarr))
-        for n in outarr:
-            outs = outs + ' ' + str(n)
-        print(outs,file=f)
-
-with open('/home/citceae/DSL/lxy/dict2.txt','a+') as f2:
-    for key in dict2:
-        outs = key + ':' + str(dict2[key])
-        print(outs,file= f2)
-
-
-
-
-
-
-    
-
-

@@ -1,0 +1,1063 @@
+[
+    [
+        "set-logic",
+        "SLIA"
+    ],
+    [
+        "synth-fun",
+        "f",
+        [
+            [
+                "name",
+                "String"
+            ]
+        ],
+        "String",
+        [
+            [
+                "Start",
+                "String",
+                [
+                    "ntString"
+                ]
+            ],
+            [
+                "ntString",
+                "String",
+                [
+                    "name",
+                    [
+                        "String",
+                        " "
+                    ],
+                    [
+                        "String",
+                        "."
+                    ],
+                    [
+                        "String",
+                        "Dr."
+                    ],
+                    [
+                        "str.++",
+                        "ntString",
+                        "ntString"
+                    ],
+                    [
+                        "str.replace",
+                        "ntString",
+                        "ntString",
+                        "ntString"
+                    ],
+                    [
+                        "str.at",
+                        "ntString",
+                        "ntInt"
+                    ],
+                    [
+                        "int.to.str",
+                        "ntInt"
+                    ],
+                    [
+                        "str.substr",
+                        "ntString",
+                        "ntInt",
+                        "ntInt"
+                    ]
+                ]
+            ],
+            [
+                "ntInt",
+                "Int",
+                [
+                    [
+                        "Int",
+                        0
+                    ],
+                    [
+                        "Int",
+                        1
+                    ],
+                    [
+                        "Int",
+                        2
+                    ],
+                    [
+                        "+",
+                        "ntInt",
+                        "ntInt"
+                    ],
+                    [
+                        "-",
+                        "ntInt",
+                        "ntInt"
+                    ],
+                    [
+                        "str.len",
+                        "ntString"
+                    ],
+                    [
+                        "str.to.int",
+                        "ntString"
+                    ],
+                    [
+                        "str.indexof",
+                        "ntString",
+                        "ntString",
+                        "ntInt"
+                    ]
+                ]
+            ],
+            [
+                "ntBool",
+                "Bool",
+                [
+                    [
+                        "Bool",
+                        "true"
+                    ],
+                    [
+                        "Bool",
+                        "false"
+                    ],
+                    [
+                        "=",
+                        "ntInt",
+                        "ntInt"
+                    ],
+                    [
+                        "str.prefixof",
+                        "ntString",
+                        "ntString"
+                    ],
+                    [
+                        "str.suffixof",
+                        "ntString",
+                        "ntString"
+                    ],
+                    [
+                        "str.contains",
+                        "ntString",
+                        "ntString"
+                    ]
+                ]
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Launa Withers"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Launa"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Lakenya Edison"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Lakenya"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Brendan Hage"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Brendan"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Bradford Lango"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Bradford"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Rudolf Akiyama"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Rudolf"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Lara Constable"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Lara"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Madelaine Ghoston"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Madelaine"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Salley Hornak"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Salley"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Micha Junkin"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Micha"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Teddy Bobo"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Teddy"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Coralee Scalia"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Coralee"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jeff Quashie"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jeff"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Vena Babiarz"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Vena"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Karrie Lain"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Karrie"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Tobias Dermody"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Tobias"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Celsa Hopkins"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Celsa"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Kimberley Halpern"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Kimberley"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Phillip Rowden"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Phillip"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Elias Neil"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Elias"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Lashanda Cortes"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Lashanda"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Mackenzie Spell"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Mackenzie"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Kathlyn Eccleston"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Kathlyn"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Georgina Brescia"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Georgina"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Beata Miah"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Beata"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Desiree Seamons"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Desiree"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jeanice Soderstrom"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jeanice"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Mariel Jurgens"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Mariel"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Alida Bogle"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Alida"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jacqualine Olague"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jacqualine"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Joaquin Clasen"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Joaquin"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Samuel Richert"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Samuel"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Malissa Marcus"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Malissa"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Alaina Partida"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Alaina"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Trinidad Mulloy"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Trinidad"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Carlene Garrard"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Carlene"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Melodi Chism"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Melodi"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Bess Chilcott"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Bess"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Chong Aylward"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Chong"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jani Ramthun"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jani"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jacquiline Heintz"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jacquiline"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Hayley Marquess"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Hayley"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Andria Spagnoli"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Andria"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Irwin Covelli"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Irwin"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Gertude Montiel"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Gertude"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Stefany Reily"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Stefany"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Rae Mcgaughey"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Rae"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Cruz Latimore"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Cruz"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Maryann Casler"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Maryann"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Annalisa Gregori"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Annalisa"
+            ]
+        ]
+    ],
+    [
+        "constraint",
+        [
+            "=",
+            [
+                "f",
+                [
+                    "String",
+                    "Jenee Pannell"
+                ]
+            ],
+            [
+                "String",
+                "Dr. Jenee"
+            ]
+        ]
+    ],
+    [
+        "check-synth"
+    ],
+    [
+        "define-fun",
+        "f_1",
+        [
+            [
+                "name",
+                "String"
+            ]
+        ],
+        "String",
+        [
+            "str.++",
+            [
+                "str.substr",
+                [
+                    "String",
+                    "Dr."
+                ],
+                [
+                    "Int",
+                    0
+                ],
+                [
+                    "Int",
+                    2
+                ]
+            ],
+            [
+                "str.++",
+                [
+                    "String",
+                    "."
+                ],
+                [
+                    "str.++",
+                    [
+                        "String",
+                        " "
+                    ],
+                    [
+                        "str.substr",
+                        "name",
+                        [
+                            "Int",
+                            0
+                        ],
+                        [
+                            "str.indexof",
+                            "name",
+                            [
+                                "String",
+                                " "
+                            ],
+                            [
+                                "Int",
+                                0
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]

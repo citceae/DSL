@@ -15,15 +15,7 @@ for f in filesname:
     outputname = outputpath + f[:-3] + '.out'
     cmdline = '/home/citceae/ISTool0109max/ISTool/build/executor/run_sygus ' + inputname + ' ' + outputname + ' ' + 'obe'
     os.system(cmdline)
-    
-
-
-
-    
-
-
-
-
+  
 
 '''
 for i in range(1,41):

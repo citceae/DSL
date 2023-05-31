@@ -1,0 +1,4 @@
+2 {f:str.replace(Param0,func67(Param0,0,1,str.replace(Param0," ",int.to.str(1))," ",1),"")}
+0.0000060000
+0.0000000000
+165.9216340000
